@@ -1,0 +1,184 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.desktop-container {
+  height: 2438px;
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+
+.rectangle2 {
+  height: 475px;
+  left: 50%;
+  top: 108px;
+  position: absolute;
+  transform: translateX(-50%);
+  border: 1px black solid;
+}
+
+.navbar {
+  height: 108px;
+  background: #093880;
+}
+
+.logo {
+  width: 54.72px;
+  height: 66px;
+  left: 694px;
+  top: 21px;
+  position: absolute;
+}
+
+.cah004811 {
+  width: 1440px;
+  height: 475px;
+  left: 1px;
+  top: 108px;
+  position: absolute;
+  border: 1px black solid;
+}
+
+.it-specta-title {
+  left: 28px;
+  top: 440px;
+  position: absolute;
+  color: white;
+  font-size: 64px;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.it-specta-description {
+  width: 914px;
+  left: 263px;
+  top: 635px;
+  position: absolute;
+  text-align: center;
+  color: #093880;
+  font-size: 20px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.line {
+  width: 50px;
+  height: 0px;
+  position: absolute;
+  outline: 3px white solid;
+  outline-offset: -1.5px;
+}
+
+.line1 {
+  left: 28px;
+  top: 37px;
+}
+
+.line3 {
+  left: 28px;
+  top: 57.08px;
+}
+
+.line2 {
+  left: 28px;
+  top: 77.16px;
+}
+
+.seminar-nasional {
+  left: 471px;
+  top: 845px;
+  position: absolute;
+  text-align: center;
+  color: #093880;
+  font-size: 50px;
+  font-weight: 700;
+  word-wrap: break-word;
+  z-index: 1;
+}
+
+.fun-run {
+  left: 611px;
+  top: 1406px;
+  position: absolute;
+  text-align: center;
+  color: #093880;
+  font-size: 50px;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.by-prodi {
+  left: 28px;
+  top: 521px;
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.swipe-container_semnas {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  top: 840px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.swipe-item {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.workshirt-image,
+.notebook-image,
+.tumbler-image,
+.pen-image,
+.plakat-image {
+  height: 328px;
+}
+
+.workshirt-title,
+.notebook-title,
+.tumbler-title,
+.pen-title,
+.plakat-title {
+  color: #093880;
+  font-size: 32px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+}
+
+.swipe-container_funrun {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: relative;
+    top: 1000px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.bag-image,
+.medal-image,
+.jersey-image,
+.bib-image {
+    height: 328px;
+}
+
+.bag-title,
+.medal-title,
+.jersey-title,
+.bib-title {
+    color: #093880;
+    font-size: 32px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+}
