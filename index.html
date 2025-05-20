@@ -3,161 +3,194 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SPECTA-Project</title>
+    <meta name="description" content="IT SPECTA - Event Tahunan Program Studi Teknologi Informasi UMY" />
+    <title>IT SPECTA - Prodi Teknologi Informasi UMY</title>
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="src/logo.png" type="image/png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="src/logo.png" type="image/png" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="src/Logo.png" as="image" />
   </head>
   <body>
     <div class="desktop-container">
-      <div class="video-container">
-        <video class="background-video" width="100%" loop autoplay muted preload="auto">
-          <source src="src/TEASER.mp4" type="video/mp4"/>
-        </video>
-        <div class="video-overlay">
-          <h1 class="video-title">WELCOME TO IT SPECTA</h1>
-          <p class="video-subtitle">Experience the Future of Technology</p>
-        </div>
-      </div>
-      <div class="navbar">
-        <div class="logo-container">
-          <img class="logo" src="src/Logo.png" alt="IT SPECTA Logo" />
-        </div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#semnas">Seminar Nasional</a></li>
-            <li><a href="#funrun">Fun Run</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+      <div class="main-wrapper">
+        <!-- Header Section with Video Background -->
+        <header class="video-container" data-aos="fade">
+          <video class="background-video" width="100%" loop autoplay muted playsinline preload="auto">
+            <source src="src/TEASER.mp4" type="video/mp4"/>
+          </video>
+          <div class="video-overlay">
+            <h1 class="video-title">WELCOME TO IT SPECTA</h1>
+            <p class="video-subtitle">Experience the Future of Technology</p>
+          </div>
+        </header>
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+          <div class="logo-container">
+            <img class="logo" src="src/Logo.png" alt="IT SPECTA Logo" />
+          </div>
+          <div class="nav-menu">
+            <ul class="nav-links">
+              <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="#semnas"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
+              <li><a href="#funrun"><i class="fas fa-running"></i> Fun Run</a></li>
+              <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+              <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+          </div>
         </nav>
-      </div>
-      
-      <div class="hero-section">
-        <div class="it-specta-title fade-in">IT SPECTA</div>
-        <div class="by-prodi fade-in">by Prodi Teknologi Informasi UMY</div>
-        <div class="line line1"></div>
-        <div class="line line3"></div>
-        <div class="line line2"></div>
-      </div>
-      
-      <div class="description-container">
-        <div class="it-specta-description fade-in">
-          IT Specta merupakan kegiatan tahunan Program Studi Teknologi Informasi
-          UMY yang mana ini salah satu sebuah perayaan ulang tahun prodi.
-          Didalamnya terdapat berbagai rangkaian acara, yaitu Opening Seminar
-          Nasional, Lomba Akademik dan Non-akademik, dan yang terakhir ada Fun Run
-          sekaligus closing. Dengan web ini kami memperkenalkan
-          merchandise-merchandise dari IT Specta 2025
-        </div>
-      </div>
-      
-      <section id="semnas" class="section-container">
-        <div class="section-title seminar-nasional">SEMINAR NASIONAL</div>
-        <div class="section-divider"></div>
         
-        <div class="swipe-container_semnas">
-          <div class="swipe-item">
-            <img class="workshirt-image" src="src/Workshirt.png" />
-            <div class="workshirt-title">Workshirt</div>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+          <div class="hero-content">
+            <div class="title-container">
+              <h2 class="it-specta-title fade-in" data-aos="fade-right" data-aos-duration="1000">IT SPECTA</h2>
+              <p class="by-prodi fade-in" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">by Prodi Teknologi Informasi UMY</p>
+            </div>
+            <div class="decoration-lines">
+              <div class="line line1" data-aos="fade-right" data-aos-duration="800"></div>
+              <div class="line line3" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200"></div>
+              <div class="line line2" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400"></div>
+            </div>
           </div>
-          <div class="swipe-item">
-            <img class="notebook-image" src="src/Notebook.png" />
-            <div class="notebook-title">Notebook</div>
-          </div>
-          <div class="swipe-item">
-            <img class="tumbler-image" src="src/Tumblr.png" />
-            <div class="tumbler-title">Tumbler</div>
-          </div>
-          <div class="swipe-item">
-            <img class="pen-image" src="src/Pulpen.png" />
-            <div class="pen-title">Pen</div>
-          </div>
-          <div class="swipe-item">
-            <img class="plakat-image" src="src/Plakat.png" />
-            <div class="plakat-title">Plakat</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="funrun" class="section-container">
-        <div class="section-title fun-run">FUN RUN</div>
-        <div class="section-divider"></div>
+        </section>
         
-        <div class="swipe-container_funrun">
-          <div class="swipe-item">
-            <img class="bag-image" src="src/Bag.png" />
-            <div class="bag-title">Drawstring Bag</div>
+        <!-- Description Section -->
+        <section class="description-container">
+          <div class="it-specta-description fade-in" data-aos="fade-up" data-aos-duration="1000">
+            IT Specta merupakan kegiatan tahunan Program Studi Teknologi Informasi
+            UMY yang mana ini salah satu sebuah perayaan ulang tahun prodi.
+            Didalamnya terdapat berbagai rangkaian acara, yaitu Opening Seminar
+            Nasional, Lomba Akademik dan Non-akademik, dan yang terakhir ada Fun Run
+            sekaligus closing. Dengan web ini kami memperkenalkan
+            merchandise-merchandise dari IT Specta 2025
           </div>
-          <div class="swipe-item">
-            <img class="jersey-image" src="src/JerseyF.png" />
-            <img class="jersey-image" src="src/JerseyB.png" />
-            <div class="jersey-title">Jersey</div>
-          </div>
-
-          <div class="swipe-item">
-            <img class="medal-image" src="src/Medal.png" />
-            <div class="medal-title">Medal</div>
-          </div>
-
-          <div class="swipe-item">
-            <img class="bib-image" src="src/BIB2.png" />
-            <div class="bib-title">BIB</div>
-          </div>
-        </div>
-      </section>
-
-      <div class="footer">
-        <div class="footer-logo">
-          <img src="src/Logo.png" />
-        </div>
-        <div class="footer-title">IT SPECTA</div>
-        <div class="footer-info">For more information:</div>
+        </section>
         
-        <div class="footer-wa">
-          <img class="footer-icon" src="src/WA.png" />
-          <div class="footer-watitle">081229374264 (Wildan)</div>
-        </div>
-        <div class="footer-ig">
-          <img class="footer-icon" src="src/IG.png" />
-          <div class="footer-igtitle">@it_specta</div>
-        </div>
-        <div class="footer-yt">
-          <img class="footer-icon" src="src/YT.png" />
-          <div class="footer-yttitle">IT SPECTA UMY</div>
-        </div>
+        <!-- Seminar Nasional Section -->
+        <section id="semnas" class="section-container">
+          <div class="section-content">
+            <h2 class="section-title seminar-nasional" data-aos="fade-up" data-aos-duration="800">SEMINAR NASIONAL</h2>
+            <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"></div>
+            
+            <div class="swipe-container_semnas">
+              <div class="swipe-item">
+                <img class="workshirt-image" src="src/Workshirt.png" />
+                <div class="workshirt-title">Workshirt</div>
+              </div>
+              <div class="swipe-item">
+                <img class="notebook-image" src="src/Notebook.png" />
+                <div class="notebook-title">Notebook</div>
+              </div>
+              <div class="swipe-item">
+                <img class="tumbler-image" src="src/Tumblr.png" />
+                <div class="tumbler-title">Tumbler</div>
+              </div>
+              <div class="swipe-item">
+                <img class="pen-image" src="src/Pulpen.png" />
+                <div class="pen-title">Pen</div>
+              </div>
+              <div class="swipe-item">
+                <img class="plakat-image" src="src/Plakat.png" />
+                <div class="plakat-title">Plakat</div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="footer-address">
-          Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY JL. Brawijaya, Kasihan, Bantul, Yogyakarta 55183
-        </div>
-        
-        <div class="sponsors">
-          <div class="sponsor-title">Sponsored by:</div>
-          <div class="sponsor-logos">
-            <img src="src/Activelab logo 1.png" />
-            <img src="src/Gojek.png" />
-            <img src="src/Logo Koat 1.png" />
+        <!-- Fun Run Section -->
+        <section id="funrun" class="section-container">
+          <div class="section-content">
+            <div class="section-title fun-run" data-aos="fade-up" data-aos-duration="800">FUN RUN</div>
+            <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"></div>
+            
+            <div class="swipe-container_funrun">
+              <div class="swipe-item">
+                <img class="bag-image" src="src/Bag.png" />
+                <div class="bag-title">Drawstring Bag</div>
+              </div>
+              <div class="swipe-item">
+                <img class="jersey-image" src="src/JerseyF.png" />
+                <img class="jersey-image" src="src/JerseyB.png" />
+                <div class="jersey-title">Jersey</div>
+              </div>
+
+              <div class="swipe-item">
+                <img class="medal-image" src="src/Medal.png" />
+                <div class="medal-title">Medal</div>
+              </div>
+
+              <div class="swipe-item">
+                <img class="bib-image" src="src/BIB2.png" />
+                <div class="bib-title">BIB</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="media-partners">
-          <div class="media-title">Media Partner:</div>
-          <div class="media-logos">
-            <img src="src/LariJogja.png" />
-            <img src="src/logo rpc 1.png" />
-            <img src="src/Logo Fotoyu 1.png" />
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-logo">
+              <img src="src/Logo.png" alt="IT SPECTA Logo" />
+            </div>
+            <h2 class="footer-title">IT SPECTA</h2>
+            <p class="footer-info">For more information:</p>
+            
+            <div class="contact-info">
+              <div class="footer-wa contact-item">
+                <img class="footer-icon" src="src/WA.png" alt="WhatsApp" />
+                <div class="footer-watitle">081229374264 (Wildan)</div>
+              </div>
+              <div class="footer-ig contact-item">
+                <img class="footer-icon" src="src/IG.png" alt="Instagram" />
+                <div class="footer-igtitle">@it_specta</div>
+              </div>
+              <div class="footer-yt contact-item">
+                <img class="footer-icon" src="src/YT.png" alt="YouTube" />
+                <div class="footer-yttitle">IT SPECTA UMY</div>
+              </div>
+            </div>
+
+            <div class="footer-address">
+              Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY<br>
+              JL. Brawijaya, Kasihan, Bantul, Yogyakarta 55183
+            </div>
+            
+            <div class="partnership">
+              <div class="sponsors">
+                <h3 class="sponsor-title">Sponsored by:</h3>
+                <div class="sponsor-logos">
+                  <img src="src/Activelab logo 1.png" />
+                  <img src="src/Gojek.png" />
+                  <img src="src/Logo Koat 1.png" />
+                </div>
+              </div>
+              <div class="media-partners">
+                <h3 class="media-title">Media Partner:</h3>
+                <div class="media-logos">
+                  <img src="src/LariJogja.png" />
+                  <img src="src/logo rpc 1.png" />
+                  <img src="src/Logo Fotoyu 1.png" />
+                </div>
+              </div>
+            </div>
+            
           </div>
-        </div>
-        <div class="youtube-line"></div>
-        <div class="it-specta-umy">
-        <img class="logo-youtube" src="src/youtube_line.png" />
-        IT Specta UMY
+        </footer>
       </div>
-      </div>
-
-      
     </div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
