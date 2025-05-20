@@ -693,7 +693,12 @@ a {
 }
 
 .speakers-section,
-.route-section,
+.route-section{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 .categories-section {
   padding: 60px 0;
   background-color: var(--bg-light);
@@ -770,7 +775,6 @@ a {
 }
 
 .route-map {
-  width: 100%;
   margin: 30px 0;
   border-radius: 10px;
   overflow: hidden;
@@ -778,9 +782,12 @@ a {
 }
 
 .route-map img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 720px;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
 }
 
 .route-description {
