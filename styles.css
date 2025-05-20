@@ -709,6 +709,7 @@ a {
 
 .speaker-card,
 .category-card {
+  position: center;
   background: var(--light-color);
   border-radius: 10px;
   overflow: hidden;
@@ -723,7 +724,9 @@ a {
 }
 
 .speaker-image {
-  height: 250px;
+  width: 300px;
+  position: center;
+  margin: 0 auto;
   overflow: hidden;
 }
 
