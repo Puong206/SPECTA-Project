@@ -6,79 +6,108 @@
     <title>SPECTA-Project</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="src/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <script src="script.js"></script>
     <div class="desktop-container">
       <div class="video-container">
         <video class="background-video" width="100%" loop autoplay muted preload="auto">
           <source src="src/TEASER.mp4" type="video/mp4"/>
         </video>
+        <div class="video-overlay">
+          <h1 class="video-title">WELCOME TO IT SPECTA</h1>
+          <p class="video-subtitle">Experience the Future of Technology</p>
+        </div>
       </div>
       <div class="navbar">
-        <nav></nav>
+        <div class="logo-container">
+          <img class="logo" src="src/Logo.png" alt="IT SPECTA Logo" />
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#semnas">Seminar Nasional</a></li>
+            <li><a href="#funrun">Fun Run</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <img class="logo" src="src/Logo.png" />
-      <div class="it-specta-title">IT SPECTA</div>
-      <div class="it-specta-description">
-        IT Specta merupakan kegiatan tahunan Program Studi Teknologi Informasi
-        UMY yang mana ini salah satu sebuah perayaan ulang tahun prodi.
-        Didalamnya terdapat berbagai rangkaian acara, yaitu Opening Seminar
-        Nasional, Lomba Akademik dan Non-akademik, dan yang terakhir ada Fun Run
-        sekaligus closing. Dengan web ini kami memperkenalkan
-        merchandise-merchandise dari IT Specta 2025
+      
+      <div class="hero-section">
+        <div class="it-specta-title fade-in">IT SPECTA</div>
+        <div class="by-prodi fade-in">by Prodi Teknologi Informasi UMY</div>
+        <div class="line line1"></div>
+        <div class="line line3"></div>
+        <div class="line line2"></div>
       </div>
-      <div class="line line1"></div>
-      <div class="line line3"></div>
-      <div class="line line2"></div>
-      <div class="seminar-nasional">SEMINAR NASIONAL</div>
-      <div class="fun-run">FUN RUN</div>
-      <div class="by-prodi">by Prodi Teknologi Informasi UMY</div>
-
-      <div class="swipe-container_semnas">
-        <div class="swipe-item">
-          <img class="workshirt-image" src="src/Workshirt.png" />
-          <div class="workshirt-title">Workshirt</div>
-        </div>
-        <div class="swipe-item">
-          <img class="notebook-image" src="src/Notebook.png" />
-          <div class="notebook-title">Notebook</div>
-        </div>
-        <div class="swipe-item">
-          <img class="tumbler-image" src="src/Tumblr.png" />
-          <div class="tumbler-title">Tumbler</div>
-        </div>
-        <div class="swipe-item">
-          <img class="pen-image" src="src/Pulpen.png" />
-          <div class="pen-title">Pen</div>
-        </div>
-        <div class="swipe-item">
-          <img class="plakat-image" src="src/Plakat.png" />
-          <div class="plakat-title">Plakat</div>
+      
+      <div class="description-container">
+        <div class="it-specta-description fade-in">
+          IT Specta merupakan kegiatan tahunan Program Studi Teknologi Informasi
+          UMY yang mana ini salah satu sebuah perayaan ulang tahun prodi.
+          Didalamnya terdapat berbagai rangkaian acara, yaitu Opening Seminar
+          Nasional, Lomba Akademik dan Non-akademik, dan yang terakhir ada Fun Run
+          sekaligus closing. Dengan web ini kami memperkenalkan
+          merchandise-merchandise dari IT Specta 2025
         </div>
       </div>
+      
+      <section id="semnas" class="section-container">
+        <div class="section-title seminar-nasional">SEMINAR NASIONAL</div>
+        <div class="section-divider"></div>
+        
+        <div class="swipe-container_semnas">
+          <div class="swipe-item">
+            <img class="workshirt-image" src="src/Workshirt.png" />
+            <div class="workshirt-title">Workshirt</div>
+          </div>
+          <div class="swipe-item">
+            <img class="notebook-image" src="src/Notebook.png" />
+            <div class="notebook-title">Notebook</div>
+          </div>
+          <div class="swipe-item">
+            <img class="tumbler-image" src="src/Tumblr.png" />
+            <div class="tumbler-title">Tumbler</div>
+          </div>
+          <div class="swipe-item">
+            <img class="pen-image" src="src/Pulpen.png" />
+            <div class="pen-title">Pen</div>
+          </div>
+          <div class="swipe-item">
+            <img class="plakat-image" src="src/Plakat.png" />
+            <div class="plakat-title">Plakat</div>
+          </div>
+        </div>
+      </section>
 
-      <div class="swipe-container_funrun">
-        <div class="swipe-item">
-          <img class="bag-image" src="src/Bag.png" />
-          <div class="bag-title">Drawstring Bag</div>
-        </div>
-        <div class="swipe-item">
-          <img class="jersey-image" src="src/JerseyF.png" />
-          <img class="jersey-image" src="src/JerseyB.png" />
-          <div class="jersey-title">Jersey</div>
-        </div>
+      <section id="funrun" class="section-container">
+        <div class="section-title fun-run">FUN RUN</div>
+        <div class="section-divider"></div>
+        
+        <div class="swipe-container_funrun">
+          <div class="swipe-item">
+            <img class="bag-image" src="src/Bag.png" />
+            <div class="bag-title">Drawstring Bag</div>
+          </div>
+          <div class="swipe-item">
+            <img class="jersey-image" src="src/JerseyF.png" />
+            <img class="jersey-image" src="src/JerseyB.png" />
+            <div class="jersey-title">Jersey</div>
+          </div>
 
-        <div class="swipe-item">
-          <img class="medal-image" src="src/Medal.png" />
-          <div class="medal-title">Medal</div>
-        </div>
+          <div class="swipe-item">
+            <img class="medal-image" src="src/Medal.png" />
+            <div class="medal-title">Medal</div>
+          </div>
 
-        <div class="swipe-item">
-          <img class="bib-image" src="src/BIB2.png" />
-          <div class="bib-title">BIB</div>
+          <div class="swipe-item">
+            <img class="bib-image" src="src/BIB2.png" />
+            <div class="bib-title">BIB</div>
+          </div>
         </div>
-      </div>
+      </section>
 
       <div class="footer">
         <div class="footer-logo">
@@ -129,5 +158,6 @@
 
       
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
