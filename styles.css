@@ -1193,13 +1193,13 @@ a {
 .team-image {
   height: 250px;
   overflow: hidden;
-  position-anchor: top;
 }
 
 .team-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top; /* Change this to position images from the top */
   transition: transform var(--transition-medium);
 }
 
