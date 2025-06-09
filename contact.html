@@ -6,8 +6,22 @@
     <meta name="description" content="Contact IT SPECTA - Program Studi Teknologi Informasi UMY" />
     <title>Contact - IT SPECTA UMY</title>
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#093880',
+              secondary: '#eb8317',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Additional Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -15,127 +29,129 @@
     <!-- Favicon -->
     <link rel="icon" href="src/logo.png" type="image/png" />
   </head>
-  <body>
-    <div class="desktop-container">
-      <div class="main-wrapper">
+  <body class="font-['Plus_Jakarta_Sans'] text-gray-800 bg-gray-50 overflow-x-hidden">
+    <div class="min-h-screen relative bg-white overflow-hidden">
+      <div class="h-full overflow-x-hidden">
         <!-- Navigation Bar -->
-        <nav class="navbar">
+        <nav class="h-28 bg-primary flex justify-between items-center px-5 md:px-12 fixed w-full top-0 z-50 shadow-md">
           <div class="logo-container">
             <a href="index.html">
               <img class="logo" src="src/Logo.png" alt="IT SPECTA Logo" />
             </a>
           </div>
           <div class="nav-menu">
-            <ul class="nav-links">
-              <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-              <li><a href="seminar-nasional.html"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
-              <li><a href="fun-run.html"><i class="fas fa-running"></i> Fun Run</a></li>
-              <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-              <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+            <ul class="nav-links flex gap-5 text-white font-semibold">
+              <li><a href="index.html" class="hover:text-secondary transition-colors"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="seminar-nasional.html" class="hover:text-secondary transition-colors"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
+              <li><a href="fun-run.html" class="hover:text-secondary transition-colors"><i class="fas fa-running"></i> Fun Run</a></li>
+              <li><a href="about.html" class="hover:text-secondary transition-colors"><i class="fas fa-info-circle"></i> About</a></li>
+              <li><a href="contact.html" class="active text-secondary transition-colors"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
           </div>
         </nav>
         
         <!-- Header Banner -->
-        <header class="page-header contact-header">
-          <div class="header-overlay">
-            <h1 class="page-title" data-aos="fade-up">CONTACT US</h1>
-            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">GET IN TOUCH WITH US</p>
+        <header class="h-[50vh] w-full relative flex justify-center items-center mt-28 text-white text-center overflow-hidden bg-secondary/80 bg-[url('https://source.unsplash.com/random/1600x900/?contact')] bg-cover bg-center bg-blend-overlay">
+          <div class="header-overlay w-full h-full absolute top-0 left-0 bg-black opacity-50"></div>
+          <div class="header-content relative z-10 p-5">
+            <h1 class="page-title text-4xl md:text-5xl font-bold mb-2" data-aos="fade-up">CONTACT US</h1>
+            <p class="page-subtitle text-lg md:text-xl" data-aos="fade-up" data-aos-delay="200">GET IN TOUCH WITH US</p>
           </div>
         </header>
         
         <!-- Main Content -->
-        <main class="page-content">
+        <main class="py-16">
           <!-- Contact Section -->
-          <section class="contact-section" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Hubungi Kami</h2>
-              <div class="section-divider"></div>
+          <section class="py-16" data-aos="fade-up">
+            <div class="w-full max-w-6xl mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Hubungi Kami</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
-              <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
-                  <div class="info-item">
-                    <div class="info-icon">
-                      <i class="fas fa-map-marker-alt"></i>
+              <div class="flex flex-wrap gap-10 my-10">
+                <div class="flex-1 basis-80" data-aos="fade-right">
+                  <div class="contact-info">
+                    <div class="info-item flex items-start mb-5">
+                      <div class="info-icon mr-4 text-secondary">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                      </div>
+                      <div class="info-content">
+                        <h3 class="text-lg font-semibold">Lokasi</h3>
+                        <p class="text-gray-700">Gedung Siti Walidah, F4 Lt.2<br>Kampus Terpadu UMY<br>JL. Brawijaya, Kasihan, Bantul<br>Yogyakarta 55183</p>
+                      </div>
                     </div>
-                    <div class="info-content">
-                      <h3>Lokasi</h3>
-                      <p>Gedung Siti Walidah, F4 Lt.2<br>Kampus Terpadu UMY<br>JL. Brawijaya, Kasihan, Bantul<br>Yogyakarta 55183</p>
+                    
+                    <div class="info-item flex items-start mb-5">
+                      <div class="info-icon mr-4 text-secondary">
+                        <i class="fas fa-phone-alt fa-2x"></i>
+                      </div>
+                      <div class="info-content">
+                        <h3 class="text-lg font-semibold">Telepon</h3>
+                        <p class="text-gray-700">+62 812-2937-4264 (Wildan)</p>
+                        <p class="text-gray-700">+62 857-0604-3234 (Admin IT Specta)</p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div class="info-item">
-                    <div class="info-icon">
-                      <i class="fas fa-phone-alt"></i>
+                    
+                    <div class="info-item flex items-start mb-5">
+                      <div class="info-icon mr-4 text-secondary">
+                        <i class="fas fa-envelope fa-2x"></i>
+                      </div>
+                      <div class="info-content">
+                        <h3 class="text-lg font-semibold">Email</h3>
+                        <p class="text-gray-700">itspecta8@gmail.com</p>
+                      </div>
                     </div>
-                    <div class="info-content">
-                      <h3>Telepon</h3>
-                      <p>+62 812-2937-4264 (Wildan)</p>
-                      <p>+62 857-0604-3234 (Admin IT Specta)</p>
+                    
+                    <div class="info-item flex items-start mb-5">
+                      <div class="info-icon mr-4 text-secondary">
+                        <i class="fas fa-clock fa-2x"></i>
+                      </div>
+                      <div class="info-content">
+                        <h3 class="text-lg font-semibold">Jam Kerja</h3>
+                        <p class="text-gray-700">Senin - Jumat: 09:00 - 16:00</p>
+                        <p class="text-gray-700">Sabtu: 09:00 - 12:00</p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div class="info-item">
-                    <div class="info-icon">
-                      <i class="fas fa-envelope"></i>
+                    
+                    <div class="social-icons flex gap-4 mt-5">
+                      <a href="http://instagram.com/it_specta" class="social-icon text-primary hover:text-secondary transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram fa-lg"></i>
+                      </a>
+                      <a href="https://www.tiktok.com/@itspecta?_t=ZS-8x36eI5eblx&_r=1" class="social-icon text-primary hover:text-secondary transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-tiktok fa-lg"></i>
+                      </a>
                     </div>
-                    <div class="info-content">
-                      <h3>Email</h3>
-                      <p>itspecta8@gmail.com</p>
-
-                    </div>
-                  </div>
-                  
-                  <div class="info-item">
-                    <div class="info-icon">
-                      <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="info-content">
-                      <h3>Jam Kerja</h3>
-                      <p>Senin - Jumat: 09:00 - 16:00</p>
-                      <p>Sabtu: 09:00 - 12:00</p>
-                    </div>
-                  </div>
-                  
-                  <div class="social-icons">
-                    <a href="http://instagram.com/it_specta" class="social-icon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@itspecta?_t=ZS-8x36eI5eblx&_r=1" class="social-icon" target="_blank" rel="noopener noreferrer">
-                     <i class="fab fa-tiktok"></i>
-                    </a>
                   </div>
                 </div>
                 
-                <div class="contact-form" data-aos="fade-left">
-                  <h3>Kirim Pesan</h3>
+                <div class="flex-1 basis-96 bg-white p-8 rounded-lg shadow-md" data-aos="fade-left">
+                  <h3 class="text-xl font-semibold mb-4">Kirim Pesan</h3>
                   <form id="contactForm">
-                    <div class="form-group">
-                      <label for="name">Nama Lengkap</label>
-                      <input type="text" id="name" name="name" required>
+                    <div class="form-group mb-4">
+                      <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                      <input type="text" id="name" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
                     </div>
                     
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" id="email" name="email" required>
+                    <div class="form-group mb-4">
+                      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                      <input type="email" id="email" name="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
                     </div>
                     
-                    <div class="form-group">
-                      <label for="phone">Nomor Telepon</label>
-                      <input type="tel" id="phone" name="phone">
+                    <div class="form-group mb-4">
+                      <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+                      <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
                     </div>
                     
-                    <div class="form-group">
-                      <label for="subject">Subjek</label>
-                      <input type="text" id="subject" name="subject" required>
+                    <div class="form-group mb-4">
+                      <label for="subject" class="block text-sm font-medium text-gray-700">Subjek</label>
+                      <input type="text" id="subject" name="subject" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
                     </div>
                     
-                    <div class="form-group">
-                      <label for="message">Pesan</label>
-                      <textarea id="message" name="message" rows="5" required></textarea>
+                    <div class="form-group mb-4">
+                      <label for="message" class="block text-sm font-medium text-gray-700">Pesan</label>
+                      <textarea id="message" name="message" rows="5" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                    <button type="submit" class="submit-btn w-full py-3 px-4 bg-primary text-white font-semibold rounded-md shadow-md hover:bg-secondary transition-colors">Kirim Pesan</button>
                   </form>
                 </div>
               </div>
@@ -143,72 +159,82 @@
           </section>
           
           <!-- Map Section -->
-          <section class="map-section" data-aos="fade-up">
-            <div class="container">
-                <h2 class="section-title">Lokasi Kami</h2>
-                <div class="section-divider"></div>
+          <section class="py-16 bg-primary/[0.03]" data-aos="fade-up">
+            <div class="container mx-auto px-5">
+                <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Lokasi Kami</h2>
+                <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
                 
                 <div class="map-container">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.825833239851!2d110.32045487579586!3d-7.80854469221295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57e3dbaf7025%3A0x6f3e5dbd51a6639a!2sUniversitas%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sid!2sid!4v1717901726027!5m2!1sid!2sid" 
                         width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-        </section>
+          </section>
           
           <!-- FAQ Section -->
-          <section class="faq-section" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Frequently Asked Questions</h2>
-              <div class="section-divider"></div>
+          <section class="py-16" data-aos="fade-up">
+            <div class="container mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Frequently Asked Questions</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
               <div class="faq-container">
-                <div class="faq-item" data-aos="fade-up">
-                  <div class="faq-question">
-                    <h3>Apa itu IT SPECTA?</h3>
-                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                <div class="faq-item mb-4" data-aos="fade-up">
+                  <div class="faq-question bg-gray-100 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Apa itu IT SPECTA?</h3>
+                    <span class="faq-toggle text-primary">
+                      <i class="fas fa-plus"></i>
+                    </span>
                   </div>
-                  <div class="faq-answer">
-                    <p>IT SPECTA adalah kegiatan tahunan Program Studi Teknologi Informasi UMY untuk merayakan ulang tahun prodi. Kegiatan ini terdiri dari seminar nasional, kompetisi akademik dan non-akademik, serta fun run.</p>
-                  </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                  <div class="faq-question">
-                    <h3>Bagaimana cara mendaftar untuk Seminar Nasional?</h3>
-                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Pendaftaran untuk Seminar Nasional dapat dilakukan melalui website resmi IT SPECTA. Silakan kunjungi halaman Seminar Nasional dan ikuti petunjuk pendaftaran yang tersedia. Pendaftaran akan dibuka mulai 1 Januari 2025.</p>
+                  <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="p-4 text-gray-700">IT SPECTA adalah kegiatan tahunan Program Studi Teknologi Informasi UMY untuk merayakan ulang tahun prodi. Kegiatan ini terdiri dari seminar nasional, kompetisi akademik dan non-akademik, serta fun run.</p>
                   </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up">
-                  <div class="faq-question">
-                    <h3>Apakah ada biaya untuk mengikuti Fun Run?</h3>
-                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                <div class="faq-item mb-4" data-aos="fade-up">
+                  <div class="faq-question bg-gray-100 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Bagaimana cara mendaftar untuk Seminar Nasional?</h3>
+                    <span class="faq-toggle text-primary">
+                      <i class="fas fa-plus"></i>
+                    </span>
                   </div>
-                  <div class="faq-answer">
-                    <p>Ya, terdapat biaya pendaftaran untuk mengikuti Fun Run. Biaya untuk Early bird adalah Rp 150.000, sedangkan normal sale adalah Rp 180.000. Biaya ini sudah termasuk jersey, medali, dan merchandise lainnya.</p>
-                  </div>
-                </div>
-                
-                <div class="faq-item" data-aos="fade-up">
-                  <div class="faq-question">
-                    <h3>Apakah kegiatan IT SPECTA terbuka untuk umum?</h3>
-                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Ya, sebagian besar kegiatan IT SPECTA terbuka untuk umum, termasuk Seminar Nasional dan Fun Run. Namun, beberapa kompetisi mungkin memiliki persyaratan khusus untuk peserta.</p>
+                  <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="p-4 text-gray-700">Pendaftaran untuk Seminar Nasional dapat dilakukan melalui website resmi IT SPECTA. Silakan kunjungi halaman Seminar Nasional dan ikuti petunjuk pendaftaran yang tersedia. Pendaftaran akan dibuka mulai 1 Januari 2025.</p>
                   </div>
                 </div>
                 
-                <div class="faq-item" data-aos="fade-up">
-                  <div class="faq-question">
-                    <h3>Bagaimana cara menjadi sponsor untuk IT SPECTA?</h3>
-                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                <div class="faq-item mb-4" data-aos="fade-up">
+                  <div class="faq-question bg-gray-100 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Apakah ada biaya untuk mengikuti Fun Run?</h3>
+                    <span class="faq-toggle text-primary">
+                      <i class="fas fa-plus"></i>
+                    </span>
                   </div>
-                  <div class="faq-answer">
-                    <p>Untuk informasi mengenai sponsorship, silakan hubungi kami melalui email itspecta@umy.ac.id atau telepon ke 081229374264 (Wildan). Kami memiliki berbagai paket sponsorship yang dapat disesuaikan dengan kebutuhan perusahaan Anda.</p>
+                  <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="p-4 text-gray-700">Ya, terdapat biaya pendaftaran untuk mengikuti Fun Run. Biaya untuk Early bird adalah Rp 150.000, sedangkan normal sale adalah Rp 180.000. Biaya ini sudah termasuk jersey, medali, dan merchandise lainnya.</p>
+                  </div>
+                </div>
+                
+                <div class="faq-item mb-4" data-aos="fade-up">
+                  <div class="faq-question bg-gray-100 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Apakah kegiatan IT SPECTA terbuka untuk umum?</h3>
+                    <span class="faq-toggle text-primary">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+                  <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="p-4 text-gray-700">Ya, sebagian besar kegiatan IT SPECTA terbuka untuk umum, termasuk Seminar Nasional dan Fun Run. Namun, beberapa kompetisi mungkin memiliki persyaratan khusus untuk peserta.</p>
+                  </div>
+                </div>
+                
+                <div class="faq-item mb-4" data-aos="fade-up">
+                  <div class="faq-question bg-gray-100 p-4 rounded-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Bagaimana cara menjadi sponsor untuk IT SPECTA?</h3>
+                    <span class="faq-toggle text-primary">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+                  <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                    <p class="p-4 text-gray-700">Untuk informasi mengenai sponsorship, silakan hubungi kami melalui email itspecta@umy.ac.id atau telepon ke 081229374264 (Wildan). Kami memiliki berbagai paket sponsorship yang dapat disesuaikan dengan kebutuhan perusahaan Anda.</p>
                   </div>
                 </div>
               </div>
@@ -217,49 +243,49 @@
         </main>
         
         <!-- Footer Section -->
-        <footer class="footer">
-          <div class="footer-container">
-            <div class="footer-logo">
-              <img src="src/Logo.png" alt="IT SPECTA Logo" />
+        <footer class="bg-gradient-to-br from-secondary to-[#d9700c] text-white relative w-full py-16 px-10 mt-20">
+          <div class="footer-container max-w-6xl mx-auto">
+            <div class="footer-logo mb-8">
+              <img src="src/Logo.png" alt="IT SPECTA Logo" class="mx-auto" />
             </div>
-            <h2 class="footer-title">IT SPECTA</h2>
-            <p class="footer-info">For more information:</p>
+            <h2 class="footer-title text-3xl font-bold text-center mb-4">IT SPECTA</h2>
+            <p class="footer-info text-center mb-8">For more information:</p>
             
-            <div class="contact-info">
+            <div class="contact-info grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mb-8">
               <div class="footer-wa contact-item">
-                <img class="footer-icon" src="src/WA.png" alt="WhatsApp" />
-                <div class="footer-watitle">081229374264 (Wildan)</div>
+                <img class="footer-icon inline-block mb-2" src="src/WA.png" alt="WhatsApp" />
+                <div class="footer-watitle text-lg font-semibold">081229374264 (Wildan)</div>
               </div>
               <div class="footer-ig contact-item">
-                <img class="footer-icon" src="src/IG.png" alt="Instagram" />
-                <div class="footer-igtitle">@it_specta</div>
+                <img class="footer-icon inline-block mb-2" src="src/IG.png" alt="Instagram" />
+                <div class="footer-igtitle text-lg font-semibold">@it_specta</div>
               </div>
               <div class="footer-yt contact-item">
-                <img class="footer-icon" src="src/YT.png" alt="YouTube" />
-                <div class="footer-yttitle">IT SPECTA UMY</div>
+                <img class="footer-icon inline-block mb-2" src="src/YT.png" alt="YouTube" />
+                <div class="footer-yttitle text-lg font-semibold">IT SPECTA UMY</div>
               </div>
             </div>
 
-            <div class="footer-address">
+            <div class="footer-address text-center mb-8">
               Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY<br>
               JL. Brawijaya, Kasihan, Bantul, Yogyakarta 55183
             </div>
             
-            <div class="partnership">
+            <div class="partnership grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div class="sponsors">
-                <h3 class="sponsor-title">Sponsored by:</h3>
-                <div class="sponsor-logos">
-                  <img src="src/Activelab logo 1.png" />
-                  <img src="src/Gojek.png" />
-                  <img src="src/Logo Koat 1.png" />
+                <h3 class="sponsor-title text-lg font-semibold mb-4">Sponsored by:</h3>
+                <div class="sponsor-logos flex gap-4 justify-center">
+                  <img src="src/Activelab logo 1.png" class="h-10" />
+                  <img src="src/Gojek.png" class="h-10" />
+                  <img src="src/Logo Koat 1.png" class="h-10" />
                 </div>
               </div>
               <div class="media-partners">
-                <h3 class="media-title">Media Partner:</h3>
-                <div class="media-logos">
-                  <img src="src/LariJogja.png" />
-                  <img src="src/logo rpc 1.png" />
-                  <img src="src/Logo Fotoyu 1.png" />
+                <h3 class="media-title text-lg font-semibold mb-4">Media Partner:</h3>
+                <div class="media-logos flex gap-4 justify-center">
+                  <img src="src/LariJogja.png" class="h-10" />
+                  <img src="src/logo rpc 1.png" class="h-10" />
+                  <img src="src/Logo Fotoyu 1.png" class="h-10" />
                 </div>
               </div>
             </div>

@@ -6,8 +6,40 @@
     <meta name="description" content="Seminar Nasional IT SPECTA - Program Studi Teknologi Informasi UMY" />
     <title>Seminar Nasional - IT SPECTA UMY</title>
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#093880',
+              secondary: '#eb8317',
+            },
+            animation: {
+              'fadeInDown': 'fadeInDown 1.2s ease-out',
+              'fadeInUp': 'fadeInUp 1.2s ease-out',
+              'fadeIn': 'fadeIn 1s forwards',
+            },
+            keyframes: {
+              fadeInDown: {
+                'from': { opacity: '0', transform: 'translateY(-30px)' },
+                'to': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeInUp: {
+                'from': { opacity: '0', transform: 'translateY(30px)' },
+                'to': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                'to': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    
+    <!-- Additional Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -15,169 +47,168 @@
     <!-- Favicon -->
     <link rel="icon" href="src/logo.png" type="image/png" />
   </head>
-  <body>
-    <div class="desktop-container">
-      <div class="main-wrapper">
+  <body class="font-['Plus_Jakarta_Sans'] text-gray-800 bg-gray-50 overflow-x-hidden">
+    <div class="min-h-screen relative bg-white overflow-hidden">
+      <div class="h-full overflow-x-hidden">
         <!-- Navigation Bar -->
-        <nav class="navbar">
-          <div class="logo-container">
+        <nav class="h-28 bg-primary flex justify-between items-center px-5 md:px-12 fixed w-full top-0 z-50 shadow-md">
+          <div class="flex items-center">
             <a href="index.html">
-              <img class="logo" src="src/Logo.png" alt="IT SPECTA Logo" />
+              <img class="w-14 h-16 transition-transform duration-300 hover:scale-110" src="src/Logo.png" alt="IT SPECTA Logo" />
             </a>
           </div>
           <div class="nav-menu">
-            <ul class="nav-links">
-              <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-              <li><a href="seminar-nasional.html" class="active"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
-              <li><a href="fun-run.html"><i class="fas fa-running"></i> Fun Run</a></li>
-              <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-              <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <ul class="flex gap-4 md:gap-8">
+              <li><a href="index.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="seminar-nasional.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10 bg-white/10 text-secondary"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
+              <li><a href="fun-run.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-running"></i> Fun Run</a></li>
+              <li><a href="about.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-info-circle"></i> About</a></li>
+              <li><a href="contact.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
           </div>
         </nav>
         
         <!-- Header Banner -->
-        <header class="page-header seminar-header">
-          <div class="header-overlay">
-            <h1 class="page-title" data-aos="fade-up">SEMINAR NASIONAL</h1>
-            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">IT SPECTA 2025</p>
+        <header class="h-[50vh] w-full relative flex justify-center items-center mt-28 text-white text-center overflow-hidden bg-primary/80 bg-[url('https://source.unsplash.com/random/1600x900/?seminar')] bg-cover bg-center bg-blend-overlay">
+          <div class="absolute top-0 left-0 w-full h-full bg-black/50 flex flex-col justify-center items-center z-10">
+            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg" data-aos="fade-up">SEMINAR NASIONAL</h1>
+            <p class="text-2xl font-medium drop-shadow-md" data-aos="fade-up" data-aos-delay="200">IT SPECTA 2025</p>
           </div>
         </header>
         
         <!-- Main Content -->
-        <main class="page-content">
+        <main class="py-16">
           <!-- Event Info Section -->
-          <section class="event-info" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Tentang Seminar</h2>
-              <div class="section-divider"></div>
+          <section class="mb-16" data-aos="fade-up">
+            <div class="container max-w-6xl mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Tentang Seminar</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
-              <div class="event-description">
+              <div class="text-lg leading-relaxed mb-8">
                 <p>Seminar Nasional IT SPECTA 2025 merupakan rangkaian acara pembuka dari seluruh kegiatan IT SPECTA tahun ini. Seminar ini akan menghadirkan pembicara-pembicara ternama di bidang teknologi informasi dan memberikan wawasan mengenai perkembangan teknologi terkini.</p>
-                
-                <div class="event-details">
-                  <div class="detail-item" data-aos="fade-right" data-aos-delay="100">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Tanggal: 26 April 2025</span>
-                  </div>
-                  <div class="detail-item" data-aos="fade-right" data-aos-delay="200">
-                    <i class="fas fa-clock"></i>
-                    <span>Waktu: 08.00 - 12.00 WIB</span>
-                  </div>
-                  <div class="detail-item" data-aos="fade-right" data-aos-delay="300">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Tempat: Ruang Sidang lt 5, AR Fachrudin B, UMY</span>
-                  </div>
-                  <div class="detail-item" data-aos="fade-right" data-aos-delay="400">
-                    <i class="fas fa-ticket-alt"></i>
-                    <span>Biaya: Rp25.000</span>
-                  </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1" data-aos="fade-right" data-aos-delay="100">
+                  <i class="fas fa-calendar-alt text-2xl text-primary"></i>
+                  <span>Tanggal: 26 April 2025</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1" data-aos="fade-right" data-aos-delay="200">
+                  <i class="fas fa-clock text-2xl text-primary"></i>
+                  <span>Waktu: 08.00 - 12.00 WIB</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1" data-aos="fade-right" data-aos-delay="300">
+                  <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
+                  <span>Tempat: Ruang Sidang lt 5, AR Fachrudin B, UMY</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1" data-aos="fade-right" data-aos-delay="400">
+                  <i class="fas fa-ticket-alt text-2xl text-primary"></i>
+                  <span>Biaya: Rp25.000</span>
                 </div>
               </div>
             </div>
           </section>
           
           <!-- Speakers Section -->
-          <section class="speakers-section" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Pembicara</h2>
-              <div class="section-divider"></div>
+          <section class="py-16 bg-gray-50" data-aos="fade-up">
+            <div class="container max-w-6xl mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Pembicara</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
-              <div class="speakers-grid">
-                <div class="speaker-card" data-aos="fade-up" data-aos-delay="100">
-                  <div class="speaker-image">
-                    <img src="src/pembicara.png" alt="Speaker 1" onerror="this.src='https://via.placeholder.com/300x300?text=Speaker+1'">
+              <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex flex-col md:flex-row">
+                  <div class="md:flex-shrink-0 flex justify-center">
+                    <img class="h-48 w-full object-cover md:w-48" src="src/pembicara.png" alt="Speaker" onerror="this.src='https://via.placeholder.com/300x300?text=Speaker+1'">
                   </div>
-                  <div class="speaker-info">
-                    <h3 class="speaker-name">Marcel Andrian Schevenco</h3>
-                    <p class="speaker-title">Founder DataSorcerers</p>
-                    <p class="speaker-bio">Pakar Artificial Intelligence dan Machine Learning dengan pengalaman lebih dari 8 tahun di industri teknologi.</p>
+                  <div class="p-8">
+                    <h3 class="text-2xl font-semibold text-primary">Marcel Andrian Schevenco</h3>
+                    <p class="text-secondary font-medium mb-2">Founder DataSorcerers</p>
+                    <p class="text-gray-700">Pakar Artificial Intelligence dan Machine Learning dengan pengalaman lebih dari 8 tahun di industri teknologi.</p>
                   </div>
-                </div>
                 </div>
               </div>
             </div>
           </section>
           
           <!-- Merchandise Section -->
-          <section class="merchandise-section" id="merchandise" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Merchandise</h2>
-              <div class="section-divider"></div>
+          <section class="py-16" id="merchandise" data-aos="fade-up">
+            <div class="container max-w-6xl mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Merchandise</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
-              <p class="merchandise-intro">Dapatkan merchandise eksklusif Seminar Nasional IT SPECTA 2025 berikut ini:</p>
+              <p class="text-xl text-center mb-8">Dapatkan merchandise eksklusif Seminar Nasional IT SPECTA 2025 berikut ini:</p>
               
-              <div class="swipe-container_semnas">
-                <div class="swipe-item">
-                  <img class="workshirt-image" src="src/Workshirt.png" alt="Workshirt" />
-                  <div class="workshirt-title">Workshirt</div>
+              <div class="w-full overflow-x-auto flex gap-8 p-8 scroll-smooth relative">
+                <div class="flex-none text-center bg-white p-5 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                  <img class="h-80 object-contain rounded" src="src/Workshirt.png" alt="Workshirt" />
+                  <div class="text-primary text-2xl font-bold mt-4 transition-colors duration-300 hover:text-secondary">Workshirt</div>
                 </div>
-                <div class="swipe-item">
-                  <img class="notebook-image" src="src/Notebook.png" alt="Notebook" />
-                  <div class="notebook-title">Notebook</div>
+                <div class="flex-none text-center bg-white p-5 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                  <img class="h-80 object-contain rounded" src="src/Notebook.png" alt="Notebook" />
+                  <div class="text-primary text-2xl font-bold mt-4 transition-colors duration-300 hover:text-secondary">Notebook</div>
                 </div>
-                <div class="swipe-item">
-                  <img class="tumbler-image" src="src/Tumblr.png" alt="Tumbler" />
-                  <div class="tumbler-title">Tumbler</div>
+                <div class="flex-none text-center bg-white p-5 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                  <img class="h-80 object-contain rounded" src="src/Tumblr.png" alt="Tumbler" />
+                  <div class="text-primary text-2xl font-bold mt-4 transition-colors duration-300 hover:text-secondary">Tumbler</div>
                 </div>
-                <div class="swipe-item">
-                  <img class="pen-image" src="src/Pulpen.png" alt="Pen" />
-                  <div class="pen-title">Pen</div>
+                <div class="flex-none text-center bg-white p-5 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                  <img class="h-80 object-contain rounded" src="src/Pulpen.png" alt="Pen" />
+                  <div class="text-primary text-2xl font-bold mt-4 transition-colors duration-300 hover:text-secondary">Pen</div>
                 </div>
-                <div class="swipe-item">
-                  <img class="plakat-image" src="src/Plakat.png" alt="Plakat" />
-                  <div class="plakat-title">Plakat</div>
+                <div class="flex-none text-center bg-white p-5 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg cursor-pointer">
+                  <img class="h-80 object-contain rounded" src="src/Plakat.png" alt="Plakat" />
+                  <div class="text-primary text-2xl font-bold mt-4 transition-colors duration-300 hover:text-secondary">Plakat</div>
                 </div>
               </div>
             </div>
           </section>
           
           <!-- Registration Section -->
-          <section class="registration-section" data-aos="fade-up">
-            <div class="container">
-              <h2 class="section-title">Pendaftaran</h2>
-              <div class="section-divider"></div>
+          <section class="py-16 bg-primary/[0.03]" data-aos="fade-up">
+            <div class="container max-w-6xl mx-auto px-5">
+              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Pendaftaran</h2>
+              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
               
-              <div class="registration-info">
-                <p>Segera daftarkan diri Anda untuk mengikuti Seminar Nasional IT SPECTA 2025 dan dapatkan insight terkini tentang teknologi dari para pembicara terbaik di bidangnya!</p>
+              <div class="max-w-4xl mx-auto">
+                <p class="text-lg text-center mb-10">Segera daftarkan diri Anda untuk mengikuti Seminar Nasional IT SPECTA 2025 dan dapatkan insight terkini tentang teknologi dari para pembicara terbaik di bidangnya!</p>
                 
-                <div class="registration-steps">
-                  <div class="step" data-aos="fade-right" data-aos-delay="100">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                      <h3>Kunjungi Link Pendaftaran Seminar Nasional ITSPECTA 2025</h3>
+                <div class="space-y-6 mb-12">
+                  <div class="flex items-start gap-4 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:translate-x-2" data-aos="fade-right" data-aos-delay="100">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">1</div>
+                    <div>
+                      <h3 class="text-primary text-xl font-semibold mb-2">Kunjungi Link Pendaftaran Seminar Nasional ITSPECTA 2025</h3>
                     </div>
                   </div>
 
-
-                  <div class="step" data-aos="fade-right" data-aos-delay="100">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                      <h3>Isi Formulir Pendaftaran</h3>
+                  <div class="flex items-start gap-4 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:translate-x-2" data-aos="fade-right" data-aos-delay="150">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">2</div>
+                    <div>
+                      <h3 class="text-primary text-xl font-semibold mb-2">Isi Formulir Pendaftaran</h3>
                       <p>Lengkapi data diri pada formulir pendaftaran online</p>
                     </div>
                   </div>
                   
-                  <div class="step" data-aos="fade-right" data-aos-delay="200">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                      <h3>Lakukan Pembayaran</h3>
+                  <div class="flex items-start gap-4 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:translate-x-2" data-aos="fade-right" data-aos-delay="200">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">3</div>
+                    <div>
+                      <h3 class="text-primary text-xl font-semibold mb-2">Lakukan Pembayaran</h3>
                       <p>Transfer biaya pendaftaran ke rekening yang tertera</p>
                     </div>
                   </div>
                   
-                  <div class="step" data-aos="fade-right" data-aos-delay="300">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                      <h3>Konfirmasi Pembayaran</h3>
+                  <div class="flex items-start gap-4 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:translate-x-2" data-aos="fade-right" data-aos-delay="250">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">4</div>
+                    <div>
+                      <h3 class="text-primary text-xl font-semibold mb-2">Konfirmasi Pembayaran</h3>
                       <p>Kirim bukti pembayaran ke contact person</p>
                     </div>
                   </div>
-                  
-
+                </div>
                 
-                <div class="registration-cta">
-                  <a href="https://forms.gle/2v2vfDA3AxXrAdhi9" class="cta-button">Daftar Sekarang</a>
+                <div class="flex justify-center">
+                  <a href="https://forms.gle/2v2vfDA3AxXrAdhi9" class="inline-block px-8 py-4 bg-primary text-white text-lg font-bold rounded-full shadow-md transition-all duration-300 hover:bg-secondary hover:-translate-y-1 hover:shadow-lg">
+                    Daftar Sekarang
+                  </a>
                 </div>
               </div>
             </div>
@@ -185,35 +216,56 @@
         </main>
         
         <!-- Footer Section -->
-        <footer class="footer">
-          <div class="footer-container">
-            <div class="footer-logo">
-              <img src="src/Logo.png" alt="IT SPECTA Logo" />
-            </div>
-            <h2 class="footer-title">IT SPECTA</h2>
-            <p class="footer-info">For more information:</p>
-            
-            <div class="contact-info">
-              <div class="footer-wa contact-item">
-                <img class="footer-icon" src="src/WA.png" alt="WhatsApp" />
-                <div class="footer-watitle">081229374264 (Wildan)</div>
+        <footer class="bg-gradient-to-br from-secondary to-[#d9700c] text-white relative w-full py-16 px-10 mt-20">
+          <div class="w-full max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+              <div class="mb-5 md:mb-0">
+                <img src="src/Logo.png" alt="IT SPECTA Logo" class="w-32 h-auto" />
               </div>
-              <div class="footer-ig contact-item">
-                <img class="footer-icon" src="src/IG.png" alt="Instagram" />
-                <div class="footer-igtitle">@it_specta</div>
-              </div>
-              <div class="footer-yt contact-item">
-                <img class="footer-icon" src="src/YT.png" alt="YouTube" />
-                <div class="footer-yttitle">IT SPECTA UMY</div>
+              <div>
+                <h2 class="text-3xl font-bold mb-2">IT SPECTA</h2>
+                <p class="text-lg">For more information:</p>
               </div>
             </div>
 
-            <div class="footer-address">
-              Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY<br>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-10">
+              <div class="flex items-center gap-3">
+                <img class="w-10 h-10" src="src/WA.png" alt="WhatsApp" />
+                <div class="text-lg">081229374264 (Wildan)</div>
+              </div>
+              <div class="flex items-center gap-3">
+                <img class="w-10 h-10" src="src/IG.png" alt="Instagram" />
+                <div class="text-lg">@it_specta</div>
+              </div>
+              <div class="flex items-center gap-3">
+                <img class="w-10 h-10" src="src/YT.png" alt="YouTube" />
+                <div class="text-lg">IT SPECTA UMY</div>
+              </div>
+            </div>
+
+            <div class="text-center text-sm leading-relaxed mb-10">
+              Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY<br />
               JL. Brawijaya, Kasihan, Bantul, Yogyakarta 55183
             </div>
-            
-            <!-- ...existing code... -->
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <div class="mb-5 md:mb-0">
+                <h3 class="text-lg font-semibold mb-2">Sponsored by:</h3>
+                <div class="flex gap-4">
+                  <img src="src/Activelab logo 1.png" class="h-10" />
+                  <img src="src/Gojek.png" class="h-10" />
+                  <img src="src/Logo Koat 1.png" class="h-10" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Media Partner:</h3>
+                <div class="flex gap-4">
+                  <img src="src/LariJogja.png" class="h-10" />
+                  <img src="src/logo rpc 1.png" class="h-10" />
+                  <img src="src/Logo Fotoyu 1.png" class="h-10" />
+                </div>
+              </div>
+            </div>
           </div>
         </footer>
       </div>
