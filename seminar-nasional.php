@@ -255,7 +255,7 @@ require 'templates/header.php';
       </div>
       
       <div class="text-center">
-        <a href="https://forms.gle/2v2vfDA3AxXrAdhi9" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
+        <a href="php/handle_transaction.php?event_id=<?php echo $seminar['id']; ?>&redirect=seminar-nasional.php" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
           <span>Daftar Sekarang</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
