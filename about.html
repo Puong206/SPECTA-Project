@@ -15,11 +15,17 @@
             colors: {
               primary: '#093880',
               secondary: '#eb8317',
+              accent: '#41c7c7',
+              dark: '#0a1f33',
             },
             animation: {
               'fadeInDown': 'fadeInDown 1.2s ease-out',
               'fadeInUp': 'fadeInUp 1.2s ease-out',
               'fadeIn': 'fadeIn 1s forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 3s ease-in-out infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'spin-slow': 'spin 6s linear infinite',
             },
             keyframes: {
               fadeInDown: {
@@ -33,6 +39,18 @@
               fadeIn: {
                 'to': { opacity: '1', transform: 'translateY(0)' },
               },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              }
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'noise': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4NCiAgPGZpbHRlciBpZD0ibm9pc2UiIHg9IjAiIHk9IjAiPg0KICAgIDxmZVR1cmJ1bGVuY2UgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIiB0eXBlPSJmcmFjdGFsTm9pc2UiLz4NCiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+DQogIDwvZmlsdGVyPg0KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wOCIvPg0KPC9zdmc+Lg==')",
             },
           },
         },
@@ -41,209 +59,276 @@
     
     <!-- Additional Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles for advanced effects -->
+    <style>
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+      }
+
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+    </style>
     
     <!-- Favicon -->
     <link rel="icon" href="src/logo.png" type="image/png" />
   </head>
-  <body class="font-['Plus_Jakarta_Sans'] text-gray-800 bg-gray-50 overflow-x-hidden">
-    <div class="min-h-screen relative bg-white overflow-hidden">
-      <div class="h-full overflow-x-hidden">
-        <!-- Navigation Bar -->
-        <nav class="h-28 bg-primary flex justify-between items-center px-5 md:px-12 fixed w-full top-0 z-50 shadow-md">
+  <body class="font-['Poppins'] text-gray-800 bg-gradient-to-br from-gray-50 to-gray-100 bg-noise overflow-x-hidden">
+    <div class="min-h-screen relative overflow-hidden">
+      <div class="h-full overflow-x-hidden relative z-10">
+        <!-- Navigation Bar with glass effect -->
+        <nav class="h-16 sm:h-18 md:h-20 glass-effect bg-gradient-to-r from-primary/90 to-primary/95 flex justify-between items-center px-4 sm:px-8 md:px-12 fixed w-full top-0 z-50 shadow-lg">
           <div class="flex items-center">
-            <a href="index.html">
-              <img class="w-14 h-16 transition-transform duration-300 hover:scale-110" src="src/Logo.png" alt="IT SPECTA Logo" />
+            <a href="index.html" class="group">
+              <div class="relative">
+                <img class="w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-14 transition-transform duration-300 group-hover:scale-110 z-10 relative" src="src/Logo.png" alt="IT SPECTA Logo" />
+                <div class="absolute inset-0 bg-white/20 rounded-full filter blur-xl group-hover:blur-xl scale-75 transition-all duration-300 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+              </div>
             </a>
           </div>
-          <div class="nav-menu">
-            <ul class="flex gap-4 md:gap-8">
-              <li><a href="index.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-home"></i> Home</a></li>
-              <li><a href="seminar-nasional.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-chalkboard-teacher"></i> Seminar Nasional</a></li>
-              <li><a href="fun-run.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-running"></i> Fun Run</a></li>
-              <li><a href="about.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10 bg-white/10 text-secondary"><i class="fas fa-info-circle"></i> About</a></li>
-              <li><a href="contact.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-3 py-2 rounded flex items-center gap-2 hover:text-secondary hover:bg-white/10"><i class="fas fa-envelope"></i> Contact</a></li>
+          
+          <div class="nav-menu relative">
+            <ul class="flex gap-1 sm:gap-2 md:gap-4">
+              <li><a href="index.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-home text-xs"></i> <span class="hidden sm:inline">Home</span></a></li>
+              <li><a href="seminar-nasional.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-chalkboard-teacher text-xs"></i> <span class="hidden sm:inline">Seminar</span></a></li>
+              <li><a href="fun-run.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-running text-xs"></i> <span class="hidden sm:inline">Fun Run</span></a></li>
+              <li><a href="about.html" class="text-white font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white bg-white/20 text-shadow-sm hover:bg-secondary/80 hover:scale-105"><i class="fas fa-info-circle text-xs"></i> <span class="hidden sm:inline">About</span></a></li>
+              <li><a href="contact.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-envelope text-xs"></i> <span class="hidden sm:inline">Contact</span></a></li>
             </ul>
           </div>
         </nav>
 
-        <!-- Header Banner -->
-        <header class="h-[50vh] w-full relative flex justify-center items-center mt-28 text-white text-center overflow-hidden bg-primary/80 bg-[url('https://source.unsplash.com/random/1600x900/?team')] bg-cover bg-center bg-blend-overlay">
-          <div class="absolute top-0 left-0 w-full h-full bg-black/50 flex flex-col justify-center items-center z-10">
-            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg" data-aos="fade-up">ABOUT US</h1>
-            <p class="text-2xl font-medium drop-shadow-md" data-aos="fade-up" data-aos-delay="200">IT SPECTA 2025</p>
+        <!-- Hero Section -->
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative mt-16 sm:mt-18 md:mt-20 overflow-hidden">
+          <!-- Enhanced background with radial gradient -->
+          <div class="absolute inset-0 bg-gradient-radial from-[#1B4599] to-[#1D1C52] opacity-95"></div>
+          
+          <!-- Decorative background elements -->
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 via-primary/3 to-secondary/[0.03] pointer-events-none"></div>
+          <div class="absolute top-0 left-0 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl opacity-70 animate-pulse-slow"></div>
+          <div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-70"></div>
+          
+          <div class="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-5 py-6 sm:py-8 md:py-10 relative z-10">
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="800">
+              <span class="bg-white/10 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">About IT SPECTA</span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 mt-6">About Us</h1>
+              <p class="text-white/90 max-w-2xl mx-auto mt-4 text-sm sm:text-base">Learn more about IT SPECTA and our journey in technology innovation</p>
+            </div>
           </div>
-        </header>
+        </section>
 
-        <!-- Main Content -->
-        <main class="py-16">
-          <!-- About Section -->
-          <section class="py-16" data-aos="fade-up">
-            <div class="w-full max-w-6xl mx-auto px-5">
-              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Tentang IT SPECTA</h2>
-              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
+        <!-- About Section -->
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Our Story</span>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-6">Tentang IT SPECTA</h2>
+              <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto rounded-full"></div>
+            </div>
               
-              <div class="flex flex-wrap gap-10 my-10">
-                <div class="flex-1 basis-96 rounded-lg overflow-hidden shadow-lg" data-aos="fade-right">
-                  <img src="src/Logo.png" alt="IT SPECTA Event" class="w-full h-auto transition-transform duration-500 hover:scale-105" onerror="this.src='https://source.unsplash.com/random/600x400/?technology-event'"/>
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-10 items-center mb-12">
+              <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-duration="1200">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+                  <img src="src/Logo.png" alt="IT SPECTA Event" class="w-full h-64 object-contain p-8" />
                 </div>
+              </div>
                 
-                <div class="flex-1 basis-96" data-aos="fade-left">
-                  <p class="mb-5 text-lg leading-relaxed">
-                    IT SPECTA merupakan kegiatan tahunan yang diselenggarakan oleh Program Studi Teknologi Informasi Universitas Muhammadiyah Yogyakarta sebagai bentuk perayaan ulang tahun program studi.
-                  </p>
+              <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1200">
+                <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 relative overflow-hidden group">
+                  <!-- Decorative elements -->
+                  <div class="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-secondary/10 group-hover:bg-secondary/20 transition-all duration-500"></div>
+                  <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-500"></div>
+                  
+                  <div class="relative">
+                    <p class="mb-5 text-base sm:text-lg leading-relaxed text-gray-700">
+                      IT SPECTA merupakan kegiatan tahunan yang diselenggarakan oleh Program Studi Teknologi Informasi Universitas Muhammadiyah Yogyakarta sebagai bentuk perayaan ulang tahun program studi.
+                    </p>
 
-                  <p class="mb-5 text-lg leading-relaxed">
-                    Pertama kali diselenggarakan pada tahun 2018, IT SPECTA
-                    telah menjadi ajang yang dinantikan oleh mahasiswa dan
-                    civitas akademika UMY, serta masyarakat umum yang memiliki
-                    minat di bidang teknologi informasi.
-                  </p>
-
-                  <p class="mb-5 text-lg leading-relaxed">
-                    Melalui rangkaian kegiatan yang komprehensif mulai dari
-                    seminar nasional, kompetisi akademik dan non-akademik,
-                    hingga fun run, IT SPECTA bertujuan untuk:
-                  </p>
-
-                  <ul class="list-disc list-inside mb-5">
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span class="text-lg leading-relaxed">Mengembangkan kreativitas dan inovasi mahasiswa di bidang teknologi informasi</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span class="text-lg leading-relaxed">Memperluas jaringan dengan berbagai stakeholder di industri teknologi</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span class="text-lg leading-relaxed">Memberikan wadah bagi mahasiswa untuk mengaplikasikan ilmu yang diperoleh selama perkuliahan</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span class="text-lg leading-relaxed">Membangun kebersamaan dan semangat kolaborasi antar mahasiswa</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Vision Mission Section -->
-          <section class="py-16" data-aos="fade-up">
-            <div class="w-full max-w-6xl mx-auto px-5">
-              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Visi & Misi</h2>
-              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="flex flex-col items-center" data-aos="fade-right">
-                  <div class="text-6xl mb-5">
-                    <i class="fas fa-eye text-secondary"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-3">Visi</h3>
-                  <p class="text-lg leading-relaxed text-center">
-                    Menjadikan IT SPECTA sebagai wadah pengembangan kreativitas
-                    dan inovasi mahasiswa teknologi informasi yang terkemuka di
-                    tingkat nasional.
-                  </p>
-                </div>
-
-                <div class="flex flex-col items-center" data-aos="fade-left">
-                  <div class="text-6xl mb-5">
-                    <i class="fas fa-flag text-secondary"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-3">Misi</h3>
-                  <ul class="list-disc list-inside text-lg leading-relaxed">
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span>Menyelenggarakan kegiatan yang mendorong eksplorasi dan pengembangan potensi mahasiswa.</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span>Membangun jaringan kerjasama dengan berbagai stakeholder di bidang teknologi informasi.</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span>Menghadirkan sarana pembelajaran yang inovatif dan menyenangkan bagi peserta.</span>
-                    </li>
-                    <li class="flex items-center gap-3 mb-3">
-                      <i class="fas fa-check-circle text-secondary"></i>
-                      <span>Mempromosikan nilai-nilai kebersamaan, sportivitas, dan kolaborasi.</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Timeline Section -->
-          <section class="py-16" data-aos="fade-up">
-            <div class="w-full max-w-6xl mx-auto px-5">
-              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Timeline IT SPECTA 2025</h2>
-              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
-
-              <div class="space-y-10">
-                <div class="flex items-start gap-4" data-aos="fade-right">
-                  <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold">
-                    1
-                  </div>
-                  <div>
-                    <div class="text-sm text-gray-500 mb-1">1 - 25 April 2025</div>
-                    <h3 class="text-lg font-semibold mb-2">Pendaftaran Seminar Nasional</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                      Pembukaan pendaftaran peserta Seminar Nasional IT SPECTA 2025.
+                    <p class="mb-5 text-base sm:text-lg leading-relaxed text-gray-700">
+                      Pertama kali diselenggarakan pada tahun 2018, IT SPECTA
+                      telah menjadi ajang yang dinantikan oleh mahasiswa dan
+                      civitas akademika UMY, serta masyarakat umum yang memiliki
+                      minat di bidang teknologi informasi.
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div class="flex items-start gap-4" data-aos="fade-left">
-                  <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold">
-                    2
+            <!-- Goals Section -->
+            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 relative overflow-hidden group" data-aos="fade-up">
+              <div class="relative">
+                <h3 class="text-xl sm:text-2xl font-bold text-primary mb-6">Tujuan IT SPECTA</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-lightbulb text-secondary"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-800 mb-2">Kreativitas & Inovasi</h4>
+                      <p class="text-gray-600 text-sm">Mengembangkan kreativitas dan inovasi mahasiswa di bidang teknologi informasi</p>
+                    </div>
                   </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-network-wired text-accent"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-800 mb-2">Networking</h4>
+                      <p class="text-gray-600 text-sm">Memperluas jaringan dengan berbagai stakeholder di industri teknologi</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-graduation-cap text-primary"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-800 mb-2">Aplikasi Ilmu</h4>
+                      <p class="text-gray-600 text-sm">Memberikan wadah bagi mahasiswa untuk mengaplikasikan ilmu yang diperoleh selama perkuliahan</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-dark/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-users text-dark"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-800 mb-2">Kolaborasi</h4>
+                      <p class="text-gray-600 text-sm">Membangun kebersamaan dan semangat kolaborasi antar mahasiswa</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Vision Mission Section -->
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-gray-50 to-white">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Vision & Mission</span>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-6">Visi & Misi</h2>
+              <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+              <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 text-center card-hover" data-aos="fade-right">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <i class="fas fa-eye text-secondary text-2xl"></i>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-primary mb-4">Visi</h3>
+                <p class="text-base sm:text-lg leading-relaxed text-gray-700">
+                  Menjadikan IT SPECTA sebagai wadah pengembangan kreativitas
+                  dan inovasi mahasiswa teknologi informasi yang terkemuka di
+                  tingkat nasional.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 text-center card-hover" data-aos="fade-left">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <i class="fas fa-flag text-primary text-2xl"></i>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-primary mb-4">Misi</h3>
+                <div class="text-left">
+                  <div class="flex items-start gap-3 mb-3">
+                    <i class="fas fa-check-circle text-secondary mt-1 flex-shrink-0"></i>
+                    <span class="text-sm sm:text-base text-gray-700">Menyelenggarakan kegiatan yang mendorong eksplorasi dan pengembangan potensi mahasiswa.</span>
+                  </div>
+                  <div class="flex items-start gap-3 mb-3">
+                    <i class="fas fa-check-circle text-secondary mt-1 flex-shrink-0"></i>
+                    <span class="text-sm sm:text-base text-gray-700">Membangun jaringan kerjasama dengan berbagai stakeholder di bidang teknologi informasi.</span>
+                  </div>
+                  <div class="flex items-start gap-3 mb-3">
+                    <i class="fas fa-check-circle text-secondary mt-1 flex-shrink-0"></i>
+                    <span class="text-sm sm:text-base text-gray-700">Menghadirkan sarana pembelajaran yang inovatif dan menyenangkan bagi peserta.</span>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-secondary mt-1 flex-shrink-0"></i>
+                    <span class="text-sm sm:text-base text-gray-700">Mempromosikan nilai-nilai kebersamaan, sportivitas, dan kolaborasi.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Event Schedule</span>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-6">Timeline IT SPECTA 2025</h2>
+              <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-2xl shadow-md p-6 card-hover" data-aos="fade-right">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white text-lg font-bold flex-shrink-0">1</div>
+                  <div>
+                    <div class="text-sm text-gray-500 mb-1">1 - 25 April 2025</div>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">Pendaftaran Seminar Nasional</h3>
+                    <p class="text-gray-700 leading-relaxed">Pembukaan pendaftaran peserta Seminar Nasional IT SPECTA 2025.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-2xl shadow-md p-6 card-hover" data-aos="fade-left">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white text-lg font-bold flex-shrink-0">2</div>
                   <div>
                     <div class="text-sm text-gray-500 mb-1">26 April 2025</div>
-                    <h3 class="text-lg font-semibold mb-2">Seminar Nasional</h3>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">Seminar Nasional</h3>
                     <p class="text-gray-700 leading-relaxed">
                       Pelaksanaan Seminar Nasional dengan tema "Manusia vs Mesin siapa yang akan bertahan di era AI".
                     </p>
                   </div>
                 </div>
+              </div>
 
-
-                <div class="flex items-start gap-4" data-aos="fade-right">
-                  <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold">
-                    3
-                  </div>
+              <div class="bg-white rounded-2xl shadow-md p-6 card-hover" data-aos="fade-right">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white text-lg font-bold flex-shrink-0">3</div>
                   <div>
                     <div class="text-sm text-gray-500 mb-1">10 - 26 Mei 2025</div>
-                    <h3 class="text-lg font-semibold mb-2">Kompetisi Akademik</h3>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">Kompetisi Akademik</h3>
                     <p class="text-gray-700 leading-relaxed">
                       Rangkaian kompetisi dalam bidang pemrograman dan UI/UX.
                     </p>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex items-start gap-4" data-aos="fade-right">
-                  <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold">
-                    4
-                  </div>
+              <div class="bg-white rounded-2xl shadow-md p-6 card-hover" data-aos="fade-right">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white text-lg font-bold flex-shrink-0">4</div>
                   <div>
                     <div class="text-sm text-gray-500 mb-1">26 april - 26 mei 2025</div>
-                    <h3 class="text-lg font-semibold mb-2">Kompetisi Non-Akademik</h3>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">Kompetisi Non-Akademik</h3>
                     <p class="text-gray-700 leading-relaxed">
                       Rangkaian kompetisi olahraga dan e-sports.
                     </p>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex items-start gap-4" data-aos="fade-left">
-                  <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold">
-                    5
-                  </div>
+              <div class="bg-white rounded-2xl shadow-md p-6 card-hover" data-aos="fade-left">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white text-lg font-bold flex-shrink-0">5</div>
                   <div>
                     <div class="text-sm text-gray-500 mb-1">26 Mei 2025</div>
-                    <h3 class="text-lg font-semibold mb-2">Fun Run & Closing Ceremony</h3>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">Fun Run & Closing Ceremony</h3>
                     <p class="text-gray-700 leading-relaxed">
                       Kegiatan Fun Run sejauh 5K yang diikuti dengan pengumuman pemenang kompetisi dan penutupan IT SPECTA 2025.
                     </p>
@@ -251,106 +336,80 @@
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- Team Section -->
-          <section class="py-16" data-aos="fade-up">
-            <div class="w-full max-w-6xl mx-auto px-5">
-              <h2 class="text-center text-primary text-4xl md:text-5xl font-bold mb-5">Meet Our Team</h2>
-              <div class="h-1 w-24 bg-secondary mx-auto mb-10 rounded"></div>
+        <!-- Team Section -->
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-gray-50 to-white">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Our Team</span>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-6">Meet Our Team</h2>
+              <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto rounded-full"></div>
+            </div>
 
-              <p class="text-center text-lg leading-relaxed mb-10">
-                IT SPECTA 2025 diselenggarakan oleh mahasiswa Program Studi
-                Teknologi Informasi UMY yang tergabung dalam kepanitiaan
-                berikut:
-              </p>
+            <p class="text-center text-base sm:text-lg leading-relaxed mb-10 text-gray-600">
+              IT SPECTA 2025 diselenggarakan oleh mahasiswa Program Studi
+              Teknologi Informasi UMY yang tergabung dalam kepanitiaan
+              berikut:
+            </p>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div class="team-card rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                  <div class="team-image">
-                    <img
-                      src="src/fotowildan.JPG"
-                      alt="Wildan Zuhair Pratama"
-                      onerror="this.src='https://via.placeholder.com/300x300?text=Ahmad+Rizki'"
-                      class="w-full h-auto transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2">Wildan Zuhair Pratama</h3>
-                    <p class="text-gray-700 mb-4">Ketua Pelaksana</p>
-                    <div class="flex gap-3">
-                      <a href="http://instagram.com/wldnprtmaa_" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram text-secondary text-2xl"></i>
-                      </a>
-                    </div>
-                  </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative overflow-hidden">
+                  <img src="src/fotowildan.JPG" alt="Wildan Zuhair Pratama" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
                 </div>
-
-                <div class="team-card rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                  <div class="team-image">
-                    <img
-                      src="src/fotonabil.JPG"
-                      alt="Nabil Nasruddin"
-                      onerror="this.src='https://via.placeholder.com/300x300?text=Siti+Aisyah'"
-                      class="w-full h-auto transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2">Nabil Nasruddin</h3>
-                    <p class="text-gray-700 mb-4">Wakil Ketua</p>
-                    <div class="flex gap-3">
-                      <a href="http://instagram.com/nabill.udin" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram text-secondary text-2xl"></i>
-                      </a>
-                    </div>
-                  </div>
+                <div class="p-6 text-center">
+                  <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Wildan Zuhair Pratama</h3>
+                  <p class="text-gray-600 mb-4">Ketua Pelaksana</p>
+                  <a href="http://instagram.com/wldnprtmaa_" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                  </a>
                 </div>
-
-                <div class="team-card rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                  <div class="team-image">
-                    <img
-                      src="src/fotonabila.JPG"
-                      alt="Nabila Affifah"
-                      onerror="this.src='https://via.placeholder.com/300x300?text=Budi+Santoso'"
-                      class="w-full h-auto transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2">Nabila Affifah</h3>
-                    <p class="text-gray-700 mb-4">Bendahara</p>
-                    <div class="flex gap-3">
-                      <a href="http://instagram.com/nbla_zs" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram text-secondary text-2xl"></i>
-                      </a>
-                    </div>
-                  </div>
+              </div>
+              
+              <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative overflow-hidden">
+                  <img src="src/fotonabil.JPG" alt="Nabil Nasruddin" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
                 </div>
+                <div class="p-6 text-center">
+                  <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Nabil Nasruddin</h3>
+                  <p class="text-gray-600 mb-4">Wakil Ketua</p>
+                  <a href="http://instagram.com/nabill.udin" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
 
-                <div class="team-card rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="400">
-                  <div class="team-image">
-                    <img
-                      src="src/fotomoza2.JPG"
-                      alt="Shihwa Moza Kastela"
-                      onerror="this.src='https://via.placeholder.com/300x300?text=Dina+Putri'"
-                      class="w-full h-auto transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <div class="p-5">
-                    <h3 class="text-xl font-semibold mb-2">Shihwa Moza Kastela</h3>
-                    <p class="text-gray-700 mb-4">Sekretaris</p>
-                    <div class="flex gap-3">
-                      <a href="http://instagram.com/syihwamoza" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram text-secondary text-2xl"></i>
-                      </a>
-                    </div>
-                  </div>
+              <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative overflow-hidden">
+                  <img src="src/fotonabila.JPG" alt="Nabila Affifah" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+                </div>
+                <div class="p-6 text-center">
+                  <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Nabila Affifah</h3>
+                  <p class="text-gray-600 mb-4">Bendahara</p>
+                  <a href="http://instagram.com/nbla_zs" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="400">
+                <div class="relative overflow-hidden">
+                  <img src="src/fotomoza2.JPG" alt="Shihwa Moza Kastela" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+                </div>
+                <div class="p-6 text-center">
+                  <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Shihwa Moza Kastela</h3>
+                  <p class="text-gray-600 mb-4">Sekretaris</p>
+                  <a href="http://instagram.com/syihwamoza" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                  </a>
                 </div>
               </div>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
         
-        <!-- Footer Section -->
         <!-- Footer Section -->
         <footer class="bg-gradient-to-br from-secondary to-[#d9700c] text-white relative w-full py-12 sm:py-16 px-4 sm:px-8 md:px-10">
           <div class="max-w-5xl mx-auto">
