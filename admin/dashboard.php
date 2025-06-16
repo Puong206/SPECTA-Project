@@ -8,6 +8,15 @@ $total_users = $conn->query("SELECT COUNT(id) as total FROM users")->fetch_assoc
 $total_events = $conn->query("SELECT COUNT(id) as total FROM events")->fetch_assoc()['total'];
 $total_transactions = $conn->query("SELECT COUNT(id) as total FROM transactions")->fetch_assoc()['total'];
 $pending_transactions = $conn->query("SELECT COUNT(id) as total FROM transactions WHERE status = 'pending'")->fetch_assoc()['total'];
+
+// Menghitung total pemasukan dari transaksi yang disetujui
+$total_revenue_result = $conn->query("
+    SELECT COALESCE(SUM(e.price), 0) as total_revenue 
+    FROM transactions t 
+    JOIN events e ON t.event_id = e.id 
+    WHERE t.status = 'approved'
+");
+$total_revenue = $total_revenue_result->fetch_assoc()['total_revenue'];
 ?>
 
 <!-- Header dengan gradient background -->
@@ -34,7 +43,7 @@ $pending_transactions = $conn->query("SELECT COUNT(id) as total FROM transaction
 </div>
 
 <!-- Statistics Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
     <!-- Total Users Card -->
     <div class="admin-container card-hover group">
         <div class="flex items-center justify-between">
@@ -100,15 +109,50 @@ $pending_transactions = $conn->query("SELECT COUNT(id) as total FROM transaction
     </div>
 </div>
 
+<!-- Total Revenue Card - Extended -->
+<div class="admin-container card-hover group mb-6 bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200">
+    <div class="flex items-center justify-between p-2">
+        <div class="flex items-center gap-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <i class="fas fa-coins text-3xl text-white"></i>
+            </div>
+            <div>
+                <p class="text-emerald-700 font-semibold mb-2 text-lg">💰 Total Pemasukan</p>
+                <p class="text-5xl font-bold text-emerald-900 mb-2">Rp <?php echo number_format($total_revenue, 0, ',', '.'); ?></p>
+                <p class="text-emerald-600 flex items-center gap-2">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span class="font-medium">Dari transaksi yang disetujui</span>
+                    <span class="bg-emerald-200 text-emerald-800 px-2 py-1 rounded-full text-sm font-bold">
+                        <?php 
+                        $approved_count = $conn->query("SELECT COUNT(id) as total FROM transactions WHERE status = 'approved'")->fetch_assoc()['total'];
+                        echo $approved_count; 
+                        ?> transaksi
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="text-right">
+            <div class="bg-emerald-600 text-white px-4 py-2 rounded-lg mb-2">
+                <i class="fas fa-chart-line mr-2"></i>
+                <span class="font-semibold">Revenue</span>
+            </div>
+            <p class="text-emerald-600 text-sm">
+                <i class="fas fa-calendar mr-1"></i>
+                Update: <?php echo date('d/m/Y H:i'); ?>
+            </p>
+        </div>
+    </div>
+</div>
+
 <!-- Quick Actions -->
-<div class="admin-container mb-8">
+<div class="admin-container mb-6">
     <div class="flex items-center gap-3 mb-6">
         <div class="w-10 h-10 bg-gradient-to-br from-secondary to-secondary/80 rounded-lg flex items-center justify-center">
             <i class="fas fa-bolt text-white"></i>
         </div>
         <h3 class="text-xl font-bold text-gray-800">Aksi Cepat</h3>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <a href="manage_events.php" class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/90 p-6 text-white transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <div class="absolute -top-10 -right-10 w-20 h-20 bg-white/10 rounded-full"></div>
             <div class="relative z-10">
@@ -146,7 +190,7 @@ $pending_transactions = $conn->query("SELECT COUNT(id) as total FROM transaction
 </div>
 
 <!-- Recent Activity Section -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     <!-- Recent Users -->
     <div class="admin-container">
         <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
