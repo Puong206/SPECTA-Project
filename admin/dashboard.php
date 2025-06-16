@@ -37,7 +37,7 @@ $total_revenue = $total_revenue_result->fetch_assoc()['total_revenue'];
         </div>
         <div class="flex items-center gap-2 text-white/70">
             <i class="fas fa-clock"></i>
-            <span><?php echo date('l, d F Y'); ?></span>
+            <span id="current-datetime"><?php echo date('l, d F Y H:i:s'); ?></span>
         </div>
     </div>
 </div>
@@ -259,6 +259,31 @@ $total_revenue = $total_revenue_result->fetch_assoc()['total_revenue'];
         once: true,
         offset: 100
     });
+
+    // Real-time date and time update
+    function updateDateTime() {
+        const now = new Date();
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                       'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        
+        const dayName = days[now.getDay()];
+        const day = now.getDate().toString().padStart(2, '0');
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+        const formattedDateTime = `${dayName}, ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
+        document.getElementById('current-datetime').textContent = formattedDateTime;
+    }
+    
+    // Update every second
+    setInterval(updateDateTime, 1000);
+    
+    // Initialize immediately
+    updateDateTime();
 </script>
 
 <?php require_once 'templates/footer.php'; ?>
