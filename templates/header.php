@@ -16,7 +16,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Konfigurasi Tailwind (sama seperti sebelumnya)
+      // Konfigurasi Tailwind
       tailwind.config = {
         theme: {
           extend: {
@@ -25,6 +25,41 @@
               secondary: "#eb8317",
               accent: "#41c7c7",
               dark: "#0a1f33",
+            },
+            animation: {
+              fadeInDown: "fadeInDown 1.2s ease-out",
+              fadeInUp: "fadeInUp 1.2s ease-out",
+              fadeIn: "fadeIn 1s forwards",
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              float: "float 3s ease-in-out infinite",
+              shimmer: "shimmer 2s linear infinite",
+              "spin-slow": "spin 6s linear infinite",
+            },
+            keyframes: {
+              fadeInDown: {
+                from: { opacity: "0", transform: "translateY(-30px)" },
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeInUp: {
+                from: { opacity: "0", transform: "translateY(30px)" },
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeIn: {
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-200% 0" },
+                "100%": { backgroundPosition: "200% 0" },
+              },
+            },
+            backgroundImage: {
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+              noise:
+                "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4NCiAgPGZpbHRlciBpZD0ibm9pc2UiIHg9IjAiIHk9IjAiPg0KICAgIDxmZVR1cmJ1bGVuY2UgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIiB0eXBlPSJmcmFjdGFsTm9pc2UiLz4NCiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+DQogIDwvZmlsdGVyPg0KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wOCIvPg0KPC9zdmc+Lg==')",
             },
           },
         },
@@ -41,11 +76,42 @@
     <style>
       .glass-effect {
           backdrop-filter: blur(10px);
-          background: rgba(9, 56, 128, 0.85); /* Dibuat sedikit lebih solid */
+          background: rgba(9, 56, 128, 0.85);
+      }
+      
+      .text-shadow-sm {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .text-shadow-md {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      }
+
+      .text-shadow-lg {
+        text-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+      }
+
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
-  <body class="font-['Poppins'] text-gray-800 bg-gray-50 overflow-x-hidden">
+  <body class="font-['Poppins'] text-gray-800 bg-gradient-to-br from-gray-50 to-gray-100 bg-noise overflow-x-hidden">
     <div class="min-h-screen relative overflow-hidden">
       <div class="h-full overflow-x-hidden relative z-10">
         <nav class="h-20 glass-effect flex justify-between items-center px-4 sm:px-8 md:px-12 fixed w-full top-0 z-50 shadow-lg">
@@ -96,4 +162,3 @@
               </li>
             </ul>
         </div>
-        
