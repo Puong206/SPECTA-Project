@@ -58,64 +58,93 @@ $transactions_result = $conn->query("
 ");
 ?>
 
-<h2 class="text-3xl font-bold mb-6">Kelola Transaksi Pendaftaran</h2>
+<div class="admin-header">
+    <i class="fas fa-file-invoice-dollar text-blue-600"></i>
+    <h2>Kelola Transaksi Pendaftaran</h2>
+</div>
         
 <?php if($message): ?>
-    <div class="mb-4 p-3 rounded-lg <?php echo $message_type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>">
-        <?php echo $message; ?>
+    <div class="mb-6 p-4 rounded-lg border-l-4 <?php echo $message_type === 'success' ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800'; ?>">
+        <div class="flex items-center gap-2">
+            <i class="fas <?php echo $message_type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'; ?>"></i>
+            <?php echo $message; ?>
+        </div>
     </div>
 <?php endif; ?>
 
-<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="admin-container">
+    <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+        <i class="fas fa-list text-gray-600"></i>
+        Daftar Transaksi
+    </h3>
     <div class="overflow-x-auto">
-        <table class="min-w-full">
-            <thead class="bg-gray-200">
+        <table class="admin-table">
+            <thead>
                 <tr>
-                    <th class="p-3 text-left">ID</th>
-                    <th class="p-3 text-left">Username</th>
-                    <th class="p-3 text-left">Acara</th>
-                    <th class="p-3 text-left">Status</th>
-                    <th class="p-3 text-left">Tanggal Daftar</th>
-                    <th class="p-3 text-center">Aksi</th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-user mr-2"></i>Username
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-calendar-alt mr-2"></i>Acara
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-info-circle mr-2"></i>Status
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="date">
+                        <i class="fas fa-clock mr-2"></i>Tanggal Daftar
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="text-center"><i class="fas fa-cogs mr-2"></i>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ($transactions_result->num_rows > 0): ?>
                     <?php while($trans = $transactions_result->fetch_assoc()): ?>
-                    <tr class="border-b hover:bg-gray-50">
-                        <td class="p-3"><?php echo $trans['id']; ?></td>
-                        <td class="p-3 font-medium"><?php echo escape_html($trans['username']); ?></td>
-                        <td class="p-3"><?php echo escape_html($trans['event_name']); ?></td>
-                        <td class="p-3">
+                    <tr>
+                        <td class="font-semibold"><?php echo escape_html($trans['username']); ?></td>
+                        <td><?php echo escape_html($trans['event_name']); ?></td>
+                        <td>
                             <?php if ($trans['status'] == 'approved'): ?>
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-200 text-green-800">Approved</span>
+                                <span class="status-badge status-badge-success">
+                                    <i class="fas fa-check mr-1"></i>Approved
+                                </span>
                             <?php else: ?>
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-200 text-yellow-800">Pending</span>
+                                <span class="status-badge status-badge-warning">
+                                    <i class="fas fa-clock mr-1"></i>Pending
+                                </span>
                             <?php endif; ?>
                         </td>
-                        <td class="p-3"><?php echo date('d M Y, H:i', strtotime($trans['created_at'])); ?></td>
-                        <td class="p-3 flex items-center justify-center gap-2">
-                            <?php if ($trans['status'] == 'pending'): ?>
-                            <form method="POST" action="">
-                                <input type="hidden" name="transaction_id" value="<?php echo $trans['id']; ?>">
-                                <button type="submit" name="approve_transaction" class="text-green-600 hover:text-green-800 font-semibold text-sm" title="Setujui Transaksi">
-                                    <i class="fas fa-check-circle"></i> Approve
-                                </button>
-                            </form>
-                            <?php endif; ?>
+                        <td class="font-mono"><?php echo date('d M Y, H:i', strtotime($trans['created_at'])); ?></td>
+                        <td class="text-center">
+                            <div class="flex items-center justify-center gap-2">
+                                <?php if ($trans['status'] == 'pending'): ?>
+                                <form method="POST" action="" class="inline-block">
+                                    <input type="hidden" name="transaction_id" value="<?php echo $trans['id']; ?>">
+                                    <button type="submit" name="approve_transaction" class="admin-button admin-button-success text-sm" title="Setujui Transaksi">
+                                        <i class="fas fa-check-circle mr-1"></i>Approve
+                                    </button>
+                                </form>
+                                <?php endif; ?>
 
-                            <form method="POST" action="" onsubmit="return confirm('Apakah Anda yakin ingin menghapus transaksi ini? Ini tidak dapat dibatalkan.');">
-                                <input type="hidden" name="transaction_id" value="<?php echo $trans['id']; ?>">
-                                <button type="submit" name="delete_transaction" class="text-red-600 hover:text-red-800 font-semibold text-sm" title="Hapus Transaksi">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </button>
-                            </form>
+                                <form method="POST" action="" onsubmit="return confirm('Apakah Anda yakin ingin menghapus transaksi ini? Ini tidak dapat dibatalkan.');" class="inline-block">
+                                    <input type="hidden" name="transaction_id" value="<?php echo $trans['id']; ?>">
+                                    <button type="submit" name="delete_transaction" class="admin-button admin-button-danger text-sm" title="Hapus Transaksi">
+                                        <i class="fas fa-trash mr-1"></i>Hapus
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="6" class="text-center p-4 text-gray-500">Belum ada data transaksi.</td>
+                        <td colspan="5" class="text-center p-8 text-gray-500">
+                            <i class="fas fa-inbox text-4xl mb-4 block"></i>
+                            <p class="text-lg font-medium">Belum ada data transaksi.</p>
+                        </td>
                     </tr>
                 <?php endif; ?>
             </tbody>

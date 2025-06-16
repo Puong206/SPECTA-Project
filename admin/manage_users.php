@@ -1,9 +1,12 @@
 <?php
-$page_title = 'Kelola Pengguna';
-$current_page = 'users';
-require_once 'templates/header.php';
+// --- BAGIAN 1: INISIALISASI DAN KONEKSI ---
+require_once '../php/db_connect.php';
+require_once '../php/functions.php';
 
-// --- BAGIAN 1: MEMPROSES FORM (POST REQUEST) ---
+// Security check first
+check_admin();
+
+// --- BAGIAN 2: MEMPROSES FORM (POST REQUEST) ---
 // Logika ini hanya berjalan jika ada form yang disubmit.
 // Setelah selesai, ia akan selalu me-redirect.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,9 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
-// --- BAGIAN 2: MENAMPILKAN HALAMAN (GET REQUEST) ---
-
+// --- BAGIAN 3: MENYIAPKAN DATA UNTUK TAMPILAN ---
 // Menyiapkan pesan notifikasi berdasarkan status dari URL
 $message = '';
 $message_type = '';
@@ -72,68 +73,95 @@ if (isset($_GET['status'])) {
 
 // Mengambil data pengguna dari database untuk ditampilkan di tabel
 $users_result = $conn->query("SELECT id, username, role FROM users ORDER BY id ASC");
+
+// --- BAGIAN 4: SET VARIABEL UNTUK HEADER DAN INCLUDE ---
+$page_title = 'Kelola Pengguna';
+$current_page = 'users';
+require_once 'templates/header.php';
 ?>
 
-<h2 class="text-3xl font-bold mb-6">Kelola Pengguna</h2>
+<div class="admin-header">
+    <i class="fas fa-users text-blue-600"></i>
+    <h2>Kelola Pengguna</h2>
+</div>
 
 <?php if($message): ?>
-    <div class="mb-4 p-4 rounded-lg <?php echo $message_type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>">
-        <?php echo $message; ?>
+    <div class="mb-6 p-4 rounded-lg border-l-4 <?php echo $message_type === 'success' ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800'; ?>">
+        <div class="flex items-center gap-2">
+            <i class="fas <?php echo $message_type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'; ?>"></i>
+            <?php echo $message; ?>
+        </div>
     </div>
 <?php endif; ?>
 
-<div class="bg-white p-6 rounded-lg shadow-md mb-8">
-    <h3 class="font-bold text-xl mb-4">Tambah Pengguna Baru</h3>
-    <form method="POST" action="manage_users.php" class="grid md:grid-cols-3 gap-4 items-end">
+<div class="admin-container mb-8">
+    <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+        <i class="fas fa-user-plus text-green-600"></i>
+        Tambah Pengguna Baru
+    </h3>
+    <form method="POST" action="manage_users.php" class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
         <div>
-            <label class="block text-sm font-medium">Username</label>
-            <input type="text" name="username" class="mt-1 w-full p-2 border rounded" required>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
+            <input type="text" name="username" class="admin-input" required placeholder="Masukkan username">
         </div>
         <div>
-            <label class="block text-sm font-medium">Password</label>
-            <input type="password" name="password" class="mt-1 w-full p-2 border rounded" required>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+            <input type="password" name="password" class="admin-input" required placeholder="Masukkan password">
         </div>
         <div>
-            <label class="block text-sm font-medium">Role</label>
-            <select name="role" class="mt-1 w-full p-2 border rounded">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Role</label>
+            <select name="role" class="admin-input">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select>
         </div>
         <div>
-            <button type="submit" name="add_user" class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 font-semibold">Tambah Pengguna</button>
+            <button type="submit" name="add_user" class="admin-button admin-button-success w-full">
+                <i class="fas fa-plus mr-2"></i>Tambah Pengguna
+            </button>
         </div>
     </form>
 </div>
 
-<div class="bg-white p-6 rounded-lg shadow-md">
-    <h3 class="font-bold text-xl mb-4">Daftar Pengguna</h3>
+<div class="admin-container">
+    <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+        <i class="fas fa-list text-gray-600"></i>
+        Daftar Pengguna
+    </h3>
     <div class="overflow-x-auto">
-        <table class="min-w-full">
-            <thead class="bg-gray-200">
+        <table class="admin-table">
+            <thead>
                 <tr>
-                    <th class="p-3 text-left">ID</th>
-                    <th class="p-3 text-left">Username</th>
-                    <th class="p-3 text-left">Role</th>
-                    <th class="p-3 text-center">Aksi</th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-user mr-2"></i>Username
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-shield-alt mr-2"></i>Role
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="text-center"><i class="fas fa-cogs mr-2"></i>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while($user = $users_result->fetch_assoc()): ?>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="p-3"><?php echo $user['id']; ?></td>
-                    <td class="p-3 font-medium"><?php echo escape_html($user['username']); ?></td>
-                    <td class="p-3">
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full <?php echo $user['role'] === 'admin' ? 'bg-blue-200 text-blue-800' : 'bg-gray-200 text-gray-800'; ?>">
+                <tr>
+                    <td class="font-semibold"><?php echo escape_html($user['username']); ?></td>
+                    <td>
+                        <span class="status-badge <?php echo $user['role'] === 'admin' ? 'status-badge-info' : 'status-badge-secondary'; ?>">
                             <?php echo escape_html(ucfirst($user['role'])); ?>
                         </span>
                     </td>
-                    <td class="p-3 text-center">
+                    <td class="text-center">
                         <?php if ($user['id'] != $_SESSION['user_id']): ?>
                         <form method="POST" action="manage_users.php" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?');" class="inline-block">
                             <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
-                            <button type="submit" name="delete_user" class="text-red-600 hover:text-red-800 font-semibold text-sm">Hapus</button>
+                            <button type="submit" name="delete_user" class="admin-button admin-button-danger text-sm">
+                                <i class="fas fa-trash mr-1"></i>Hapus
+                            </button>
                         </form>
+                        <?php else: ?>
+                        <span class="text-gray-400 text-sm italic">Akun Anda</span>
                         <?php endif; ?>
                     </td>
                 </tr>

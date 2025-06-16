@@ -24,37 +24,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 $events = $conn->query("SELECT * FROM events ORDER BY date ASC");
 ?>
 
-<h2 class="text-3xl font-bold mb-6">Kelola Acara</h2>
+<div class="admin-header">
+    <i class="fas fa-calendar-alt text-blue-600"></i>
+    <h2>Kelola Acara</h2>
+</div>
         
 <?php if($message): ?>
-    <div class="mb-4 p-3 rounded-lg <?php echo $message_type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>">
-        <?php echo $message; ?>
+    <div class="mb-6 p-4 rounded-lg border-l-4 <?php echo $message_type === 'success' ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800'; ?>">
+        <div class="flex items-center gap-2">
+            <i class="fas <?php echo $message_type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'; ?>"></i>
+            <?php echo $message; ?>
+        </div>
     </div>
 <?php endif; ?>
 
-<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="admin-container">
+    <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+        <i class="fas fa-edit text-green-600"></i>
+        Edit Acara
+    </h3>
     <div class="overflow-x-auto">
-        <table class="min-w-full">
-            <thead class="bg-gray-200">
+        <table class="admin-table">
+            <thead>
                 <tr>
-                    <th class="p-3 text-left">Nama</th>
-                    <th class="p-3 text-left">Deskripsi</th>
-                    <th class="p-3 text-left">Tanggal</th>
-                    <th class="p-3 text-left">Harga (Rp)</th>
-                    <th class="p-3 text-left">Aksi</th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-tag mr-2"></i>Nama Acara
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="string">
+                        <i class="fas fa-align-left mr-2"></i>Deskripsi
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="date">
+                        <i class="fas fa-calendar mr-2"></i>Tanggal
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="sortable-header" data-type="number">
+                        <i class="fas fa-money-bill-wave mr-2"></i>Harga (Rp)
+                        <i class="fas fa-sort sort-arrow"></i>
+                    </th>
+                    <th class="text-center"><i class="fas fa-save mr-2"></i>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while($event = $events->fetch_assoc()): ?>
-                <tr class="border-b hover:bg-gray-50">
+                <tr>
                     <form method="POST" action="">
                         <input type="hidden" name="id" value="<?php echo $event['id']; ?>">
-                        <td class="p-2"><input type="text" name="name" class="w-full p-2 border rounded" value="<?php echo escape_html($event['name']); ?>"></td>
-                        <td class="p-2"><textarea name="description" class="w-full p-2 border rounded h-24"><?php echo escape_html($event['description']); ?></textarea></td>
-                        <td class="p-2"><input type="date" name="date" class="w-full p-2 border rounded" value="<?php echo escape_html($event['date']); ?>"></td>
-                        <td class="p-2"><input type="number" name="price" class="w-32 p-2 border rounded" step="1000" value="<?php echo escape_html($event['price']); ?>"></td>
-                        <td class="p-2">
-                            <button type="submit" name="update" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-semibold">Update</button>
+                        <td>
+                            <input type="text" name="name" class="admin-input w-full" value="<?php echo escape_html($event['name']); ?>" required>
+                        </td>
+                        <td>
+                            <textarea name="description" class="admin-input w-full h-20 resize-none" required><?php echo escape_html($event['description']); ?></textarea>
+                        </td>
+                        <td>
+                            <input type="date" name="date" class="admin-input w-full" value="<?php echo escape_html($event['date']); ?>" required>
+                        </td>
+                        <td>
+                            <input type="number" name="price" class="admin-input w-32" step="1000" value="<?php echo escape_html($event['price']); ?>" required>
+                        </td>
+                        <td class="text-center">
+                            <button type="submit" name="update" class="admin-button admin-button-primary">
+                                <i class="fas fa-save mr-1"></i>Update
+                            </button>
                         </td>
                     </form>
                 </tr>
