@@ -15,7 +15,7 @@
         }
         ?>
 
-        <form action="login_process.php" method="POST">
+        <form action="php/login_process.php" method="POST">
             <div>
                 <label for="username" class="text-sm font-medium text-gray-700">Username</label>
                 <input type="text" name="username" id="username" required
