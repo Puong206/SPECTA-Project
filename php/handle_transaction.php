@@ -1,18 +1,20 @@
 <?php
-// File: handle_transaction.php
+// File: /php/handle_transaction.php
 require 'db_connect.php';
+require 'functions.php'; // Panggil juga functions.php
 
 $event_id = isset($_GET['event_id']) ? (int)$_GET['event_id'] : 0;
-$redirect_page = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.html';
+$redirect_page = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
 
-// Cek apakah user sudah login
+// Cek apakah user sudah login menggunakan fungsi dari functions.php
+// Path redirect di sini juga perlu diperbaiki
 if (!isset($_SESSION['user_id'])) {
-    // Jika belum, arahkan ke halaman login dengan parameter redirect
-    header("Location: login.php?redirect=" . urlencode($redirect_page));
+    // Jika belum, arahkan ke halaman login di direktori root
+    header("Location: ../login.php?redirect=" . urlencode($redirect_page));
     exit();
 }
 
-// Jika sudah login, proses transaksi (logika ini bisa dikembangkan lebih lanjut)
+// Jika sudah login, proses transaksi
 $user_id = $_SESSION['user_id'];
 
 // Ambil harga dari event
@@ -30,12 +32,14 @@ if ($result->num_rows > 0) {
     $insert_stmt->execute();
     $insert_stmt->close();
 
-    // Arahkan ke halaman konfirmasi atau pembayaran
-    header("Location: transaction_success.php");
+    // Arahkan ke halaman konfirmasi atau pembayaran di direktori root
+    // === PERBAIKAN DI SINI ===
+    header("Location: ../transaction_success.php");
     exit();
 } else {
-    // Event tidak ditemukan
-    header("Location: " . $redirect_page . "?error=Event tidak valid");
+    // Event tidak ditemukan, arahkan kembali ke halaman sebelumnya di direktori root
+    // === PERBAIKAN DI SINI ===
+    header("Location: ../" . $redirect_page . "?error=Event tidak valid");
     exit();
 }
 
