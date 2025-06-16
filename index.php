@@ -88,6 +88,34 @@ require 'php/db_connect.php';
   </div>
 </header>
 
+<?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
+<!-- Welcome Message for Logged In Users -->
+<section class="relative py-6 px-4 sm:px-6 md:px-8 bg-gradient-to-r from-primary/10 via-white to-secondary/10 border-b border-gray-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-down" data-aos-duration="800">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg sm:text-xl font-bold text-gray-800">
+            Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?>! 👋
+          </h3>
+          <p class="text-sm text-gray-600">Terima kasih telah bergabung dengan IT SPECTA 2025</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="profile.php" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 text-sm font-medium">
+          Profil Saya
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
 <!-- Hero Section with better visuals -->
 <section
   id="about"
