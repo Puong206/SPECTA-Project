@@ -251,11 +251,11 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
         <div class="relative overflow-hidden">
-          <img src="assets/images/fotowildan.JPG" alt="Wildan Zuhair Pratama" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+          <img src="assets/images/fotowildan.JPG" alt="Wildan Zuhair Pratama" class="w-full h-80 object-cover object-top transition-all duration-500 group-hover:scale-105" />
         </div>
-        <div class="p-6 text-center">
-          <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Wildan Zuhair Pratama</h3>
-          <p class="text-gray-600 mb-4">Ketua Pelaksana</p>
+        <div class="p-8 text-center">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-primary">Wildan Zuhair</h3>
+          <p class="text-gray-600 mb-6">Ketua Pelaksana</p>
           <a href="http://instagram.com/wldnprtmaa_" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-instagram"></i>
           </a>
@@ -264,11 +264,11 @@
       
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
         <div class="relative overflow-hidden">
-          <img src="assets/images/fotonabil.JPG" alt="Nabil Nasruddin" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+          <img src="assets/images/fotonabil.JPG" alt="Nabil Nasruddin" class="w-full h-80 object-cover object-top transition-all duration-500 group-hover:scale-105" />
         </div>
-        <div class="p-6 text-center">
-          <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Nabil Nasruddin</h3>
-          <p class="text-gray-600 mb-4">Wakil Ketua</p>
+        <div class="p-8 text-center">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-primary">Nabil Nasruddin</h3>
+          <p class="text-gray-600 mb-6">Wakil Ketua</p>
           <a href="http://instagram.com/nabill.udin" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-instagram"></i>
           </a>
@@ -277,11 +277,11 @@
 
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
         <div class="relative overflow-hidden">
-          <img src="assets/images/fotonabila.JPG" alt="Nabila Affifah" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+          <img src="assets/images/fotonabila.JPG" alt="Nabila Affifah" class="w-full h-80 object-cover object-top transition-all duration-500 group-hover:scale-105" />
         </div>
-        <div class="p-6 text-center">
-          <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Nabila Affifah</h3>
-          <p class="text-gray-600 mb-4">Bendahara</p>
+        <div class="p-8 text-center">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-primary">Nabila Affifah</h3>
+          <p class="text-gray-600 mb-6">Bendahara</p>
           <a href="http://instagram.com/nbla_zs" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-instagram"></i>
           </a>
@@ -290,11 +290,11 @@
 
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="400">
         <div class="relative overflow-hidden">
-          <img src="assets/images/fotomoza2.JPG" alt="Shihwa Moza Kastela" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+          <img src="assets/images/fotomoza2.JPG" alt="Shihwa Moza Kastela" class="w-full h-80 object-cover object-top transition-all duration-500 group-hover:scale-105" />
         </div>
-        <div class="p-6 text-center">
-          <h3 class="text-lg sm:text-xl font-semibold mb-2 text-primary">Shihwa Moza Kastela</h3>
-          <p class="text-gray-600 mb-4">Sekretaris</p>
+        <div class="p-8 text-center">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-primary">Shihwa Moza Kastela</h3>
+          <p class="text-gray-600 mb-6">Sekretaris</p>
           <a href="http://instagram.com/syihwamoza" class="inline-flex items-center justify-center w-10 h-10 bg-secondary/10 rounded-full text-secondary hover:bg-secondary hover:text-white transition-all duration-300" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-instagram"></i>
           </a>
