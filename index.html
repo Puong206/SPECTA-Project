@@ -101,6 +101,49 @@
         -webkit-background-clip: text;
         color: transparent;
       }
+
+      /* Mobile navigation improvements */
+      @media (max-width: 768px) {
+        .nav-menu ul {
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(9, 56, 128, 0.95);
+          backdrop-filter: blur(10px);
+          display: none;
+          padding: 1rem;
+          border-radius: 0 0 1rem 1rem;
+        }
+        
+        .nav-menu.active ul {
+          display: flex;
+        }
+        
+        .mobile-menu-btn {
+          display: block;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+      }
+      
+      @media (min-width: 769px) {
+        .mobile-menu-btn {
+          display: none;
+        }
+      }
+
+      /* Improved card hover effects */
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
     </style>
     
     <!-- Favicon -->
@@ -128,23 +171,22 @@
           <!-- Video overlay with pattern -->
           <div class="absolute top-0 left-0 w-full h-full bg-noise opacity-30"></div>
           
-          <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center z-10 bg-gradient-to-b from-black/50 via-black/30 to-transparent">
-            <!-- Removed extra vertical spacing by reducing padding/margin -->
-            <div class="transform transition-all duration-700 hover:scale-105 py-0 my-0">
-              <h1 class="text-6xl md:text-7xl font-extrabold mb-3 drop-shadow-lg tracking-tight relative">
-                <span class="text-outline text-white leading-tight">WELCOME TO</span>
-                <div class="mt-0 relative">
+          <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center z-10 bg-gradient-to-b from-black/50 via-black/30 to-transparent px-4">
+            <div class="transform transition-all duration-700 hover:scale-105 max-w-4xl">
+              <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 drop-shadow-lg tracking-tight relative">
+                <span class="text-outline text-white leading-tight block mb-2">WELCOME TO</span>
+                <div class="relative">
                   <span class="bg-gradient-to-r from-white via-secondary to-white gradient-text text-shadow-xl">IT SPECTA</span>
                   <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full"></div>
                 </div>
               </h1>
-              <p class="text-xl md:text-2xl font-medium text-shadow-md max-w-xl mx-auto mt-3">
+              <p class="text-lg sm:text-xl md:text-2xl font-medium text-shadow-md max-w-2xl mx-auto mb-8">
                 Experience the Future of Technology
               </p>
               <div class="mt-8">
-                <a href="#about" class="px-8 py-3 bg-primary/80 hover:bg-primary border border-white/30 hover:border-white rounded-full text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center group">
+                <a href="#about" class="px-6 sm:px-8 py-3 sm:py-4 bg-primary/80 hover:bg-primary border border-white/30 hover:border-white rounded-full text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center group text-sm sm:text-base">
                   Explore Now
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
@@ -161,86 +203,92 @@
         </header>
         
         <!-- Navigation Bar with glass effect -->
-        <nav class="h-28 glass-effect bg-gradient-to-r from-primary/90 to-primary/95 flex justify-between items-center px-5 md:px-12 fixed w-full top-0 z-50 shadow-lg">
+        <nav class="h-16 sm:h-18 md:h-20 glass-effect bg-gradient-to-r from-primary/90 to-primary/95 flex justify-between items-center px-4 sm:px-8 md:px-12 fixed w-full top-0 z-50 shadow-lg">
           <div class="flex items-center">
             <a href="index.html" class="group">
               <div class="relative">
-                <img class="w-14 h-16 transition-transform duration-300 group-hover:scale-110 z-10 relative" src="src/Logo.png" alt="IT SPECTA Logo" />
+                <img class="w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-14 transition-transform duration-300 group-hover:scale-110 z-10 relative" src="src/Logo.png" alt="IT SPECTA Logo" />
                 <div class="absolute inset-0 bg-white/20 rounded-full filter blur-xl group-hover:blur-xl scale-75 transition-all duration-300 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
               </div>
             </a>
           </div>
-          <div class="nav-menu">
-            <ul class="flex gap-4 md:gap-6">
-              <li><a href="index.html" class="text-white font-semibold text-base md:text-lg transition-all duration-300 px-5 py-3 rounded-full flex items-center gap-2 hover:text-white bg-white/20 text-shadow-sm hover:bg-secondary/80 hover:scale-105"><i class="fas fa-home"></i> Home</a></li>
-              <li><a href="seminar-nasional.html" class="text-white/90 font-semibold text-base md:text-lg transition-all duration-300 px-5 py-3 rounded-full flex items-center gap-2 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-chalkboard-teacher"></i> Seminar</a></li>
-              <li><a href="fun-run.html" class="text-white/90 font-semibold text-base md:text-lg transition-all duration-300 px-5 py-3 rounded-full flex items-center gap-2 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-running"></i> Fun Run</a></li>
-              <li><a href="about.html" class="text-white/90 font-semibold text-base md:text-lg transition-all duration-300 px-5 py-3 rounded-full flex items-center gap-2 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-info-circle"></i> About</a></li>
-              <li><a href="contact.html" class="text-white/90 font-semibold text-base md:text-lg transition-all duration-300 px-5 py-3 rounded-full flex items-center gap-2 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-envelope"></i> Contact</a></li>
+          
+          <!-- Mobile menu button -->
+          <button class="mobile-menu-btn md:hidden" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <div class="nav-menu relative">
+            <ul class="flex gap-1 sm:gap-2 md:gap-4">
+              <li><a href="index.html" class="text-white font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white bg-white/20 text-shadow-sm hover:bg-secondary/80 hover:scale-105"><i class="fas fa-home text-xs"></i> <span class="hidden sm:inline">Home</span></a></li>
+              <li><a href="seminar-nasional.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-chalkboard-teacher text-xs"></i> <span class="hidden sm:inline">Seminar</span></a></li>
+              <li><a href="fun-run.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-running text-xs"></i> <span class="hidden sm:inline">Fun Run</span></a></li>
+              <li><a href="about.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-info-circle text-xs"></i> <span class="hidden sm:inline">About</span></a></li>
+              <li><a href="contact.html" class="text-white/90 font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1 hover:text-white hover:bg-secondary/80 hover:scale-105"><i class="fas fa-envelope text-xs"></i> <span class="hidden sm:inline">Contact</span></a></li>
             </ul>
           </div>
         </nav>
         
-        <!-- Hero Section with better visuals - reduced margin -->
-        <section id="about" class="relative py-16 px-5 mt-0 bg-gradient-to-b from-white to-gray-50">
+        <!-- Hero Section with better visuals -->
+        <section id="about" class="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 mt-16 sm:mt-18 md:mt-20 bg-gradient-to-b from-white to-gray-50">
           <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/50 to-transparent"></div>
           
           <div class="max-w-6xl mx-auto relative">
-            <div class="mb-10 text-center">
-              <h2 class="relative text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-5xl md:text-6xl font-extrabold mb-5 tracking-tight" data-aos="fade-up" data-aos-duration="1000">IT SPECTA</h2>
-              <p class="relative text-primary text-xl font-bold mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">by Prodi Teknologi Informasi UMY</p>
+            <div class="mb-12 sm:mb-16 text-center">
+              <h2 class="relative text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 tracking-tight" data-aos="fade-up" data-aos-duration="1000">IT SPECTA</h2>
+              <p class="relative text-primary text-lg sm:text-xl font-bold mb-6 sm:mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">by Prodi Teknologi Informasi UMY</p>
               
-              <div class="relative h-20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <div class="absolute left-1/2 -translate-x-1/2 top-0 w-32 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
-                <div class="absolute left-1/2 -translate-x-1/2 top-6 w-20 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
-                <div class="absolute left-1/2 -translate-x-1/2 top-12 w-12 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
+              <div class="relative h-16 sm:h-20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <div class="absolute left-1/2 -translate-x-1/2 top-0 w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 top-4 sm:top-6 w-16 sm:w-20 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 top-8 sm:top-12 w-8 sm:w-12 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
               </div>
             </div>
             
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-              <div class="relative group w-full md:w-1/2" data-aos="fade-right" data-aos-duration="1200">
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-10 items-center">
+              <div class="relative group w-full lg:w-1/2" data-aos="fade-right" data-aos-duration="1200">
                 <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-300"></div>
-                <div class="relative bg-white ring-1 ring-gray-200 rounded-2xl p-8">
-                  <div class="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-secondary/10 flex items-center justify-center">
-                    <div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center animate-pulse-slow">
-                      <div class="w-8 h-8 rounded-full bg-secondary/30"></div>
+                <div class="relative bg-white ring-1 ring-gray-200 rounded-2xl p-6 sm:p-8">
+                  <div class="absolute -top-8 sm:-top-12 -right-8 sm:-right-12 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-secondary/10 flex items-center justify-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-secondary/20 flex items-center justify-center animate-pulse-slow">
+                      <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-secondary/30"></div>
                     </div>
                   </div>
-                  <h3 class="text-2xl font-bold text-primary mb-4">About The Event</h3>
-                  <p class="text-gray-600 leading-relaxed">
+                  <h3 class="text-xl sm:text-2xl font-bold text-primary mb-4">About The Event</h3>
+                  <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
                     IT SPECTA is an annual celebration of innovation and technology by the Information Technology Department at UMY. Our event brings together students, professionals, and technology enthusiasts for a memorable experience that combines learning, competition, and fun.
                   </p>
                 </div>
               </div>
               
-              <div class="w-full md:w-1/2 grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
-                <div class="bg-white p-6 rounded-xl shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <i class="fas fa-calendar text-primary"></i>
+              <div class="w-full lg:w-1/2 grid grid-cols-2 gap-3 sm:gap-4" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
+                    <i class="fas fa-calendar text-primary text-sm sm:text-base"></i>
                   </div>
-                  <h3 class="font-semibold text-gray-800">Seminar</h3>
-                  <p class="text-sm text-gray-600 mt-2">Inspiring talks by industry experts</p>
+                  <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Seminar</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">Inspiring talks by industry experts</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-                  <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                    <i class="fas fa-running text-secondary"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-3 sm:mb-4">
+                    <i class="fas fa-running text-secondary text-sm sm:text-base"></i>
                   </div>
-                  <h3 class="font-semibold text-gray-800">Fun Run</h3>
-                  <p class="text-sm text-gray-600 mt-2">5K run with excitement and prizes</p>
+                  <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Fun Run</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">5K run with excitement and prizes</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-                  <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                    <i class="fas fa-trophy text-accent"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3 sm:mb-4">
+                    <i class="fas fa-trophy text-accent text-sm sm:text-base"></i>
                   </div>
-                  <h3 class="font-semibold text-gray-800">Competitions</h3>
-                  <p class="text-sm text-gray-600 mt-2">Academic and non-academic contests</p>
+                  <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Competitions</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">Academic and non-academic contests</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-                  <div class="w-12 h-12 rounded-full bg-dark/10 flex items-center justify-center mb-4">
-                    <i class="fas fa-laptop-code text-dark"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-dark/10 flex items-center justify-center mb-3 sm:mb-4">
+                    <i class="fas fa-laptop-code text-dark text-sm sm:text-base"></i>
                   </div>
-                  <h3 class="font-semibold text-gray-800">Workshops</h3>
-                  <p class="text-sm text-gray-600 mt-2">Hands-on experience with technologies</p>
+                  <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Workshops</h3>
+                  <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">Hands-on experience with technologies</p>
                 </div>
               </div>
             </div>
@@ -248,22 +296,22 @@
         </section>
         
         <!-- Description Section with better design -->
-        <section class="py-24 px-5 relative overflow-hidden">
+        <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden">
           <div class="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent pointer-events-none"></div>
           
           <div class="max-w-4xl mx-auto relative">
-            <div class="text-center mb-10" data-aos="fade-up">
-              <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold">OUR VISION</span>
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-4">The Spirit of IT SPECTA</h2>
+            <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">OUR VISION</span>
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4">The Spirit of IT SPECTA</h2>
             </div>
             
-            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 relative overflow-hidden group" data-aos="fade-up">
+            <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 relative overflow-hidden group" data-aos="fade-up">
               <!-- Decorative elements -->
               <div class="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-secondary/10 group-hover:bg-secondary/20 transition-all duration-500"></div>
               <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-500"></div>
               
               <div class="relative">
-                <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+                <p class="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed">
                   IT Specta merupakan kegiatan tahunan Program Studi Teknologi Informasi
                   UMY yang mana ini salah satu sebuah perayaan ulang tahun prodi.
                   Didalamnya terdapat berbagai rangkaian acara, yaitu Opening Seminar
@@ -271,20 +319,20 @@
                   sekaligus closing.
                 </p>
                 
-                <div class="mt-8 border-l-4 border-secondary pl-6 py-2">
-                  <p class="italic text-gray-600">"Celebrating innovation, fostering collaboration, and building the future of technology together."</p>
+                <div class="mt-6 sm:mt-8 border-l-4 border-secondary pl-4 sm:pl-6 py-2">
+                  <p class="italic text-gray-600 text-sm sm:text-base">"Celebrating innovation, fostering collaboration, and building the future of technology together."</p>
                 </div>
                 
-                <div class="flex justify-center mt-8">
-                  <div class="flex items-center gap-3 bg-primary/5 hover:bg-primary/10 px-5 py-3 rounded-full transition-all duration-300 cursor-pointer group">
-                    <div class="w-10 h-10 rounded-full overflow-hidden">
+                <div class="flex justify-center mt-6 sm:mt-8">
+                  <div class="flex items-center gap-2 sm:gap-3 bg-primary/5 hover:bg-primary/10 px-4 sm:px-5 py-2 sm:py-3 rounded-full transition-all duration-300 cursor-pointer group">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden">
                       <img src="src/Logo.png" alt="IT SPECTA Logo" class="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <p class="text-primary font-semibold text-sm">IT SPECTA 2025</p>
+                      <p class="text-primary font-semibold text-xs sm:text-sm">IT SPECTA 2025</p>
                       <p class="text-gray-600 text-xs">Teknologi Informasi UMY</p>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-primary transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -294,90 +342,109 @@
           </div>
         </section>
         
-        <!-- Seminar Nasional Section - Enhanced with modern styling -->
-        <section id="semnas" class="py-24 px-5 relative my-16 overflow-hidden">
-          <!-- Decorative background elements -->
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/[0.03] pointer-events-none"></div>
-          <div class="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full filter blur-3xl opacity-70"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full filter blur-3xl opacity-70"></div>
+        <!-- Seminar Nasional Section -->
+        <section id="semnas" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden">
+          <!-- Background image -->
+          <div class="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-40 z-0" style="background-image: url('src/SemNas Background.JPG');"></div>
           
-          <div class="w-full max-w-6xl mx-auto px-5 py-10 relative z-10">
-            <!-- Section header with enhanced animation -->
-            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-              <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">Event Highlight</span>
-              <h2 class="text-center text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary bg-clip-text text-4xl md:text-5xl font-bold mt-4 mb-3" data-aos-delay="100">SEMINAR NASIONAL</h2>
-              <p class="text-gray-600 max-w-2xl mx-auto">Expand your knowledge with industry experts discussing the latest tech trends</p>
-              <div class="h-1 w-24 bg-secondary mx-auto mt-6 mb-2 rounded-full" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"></div>
+          <!-- Glassmorphism layers -->
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-white/10 to-secondary/20 backdrop-blur-sm z-10"></div>
+          <div class="absolute inset-0 bg-white/10 backdrop-blur-lg z-15"></div>
+          
+          <!-- Glass border and shadow effects -->
+          <div class="absolute inset-0 border border-white/20 shadow-2xl z-20"></div>
+          
+          <!-- Decorative background elements with glass effect -->
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/[0.03] pointer-events-none z-25"></div>
+          <div class="absolute top-0 right-0 w-80 h-80 bg-primary/15 rounded-full filter blur-3xl opacity-70 backdrop-blur-sm z-25"></div>
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full filter blur-3xl opacity-70 backdrop-blur-sm z-25"></div>
+          
+          <!-- Additional glass elements -->
+          <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full filter blur-xl opacity-60 z-25"></div>
+          <div class="absolute bottom-1/3 right-1/3 w-24 h-24 bg-white/5 rounded-full filter blur-xl opacity-60 z-25"></div>
+          
+          <div class="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-5 py-6 sm:py-8 md:py-10 relative z-30">
+            <!-- Section header -->
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="800">
+              <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Event Highlight</span>
+              
+              <!-- Seminar Nasional Logo -->
+              <div class="mt-6 mb-6 flex justify-center" data-aos-delay="100">
+                <img src="src/Logo SemNas.png" alt="Seminar Nasional" class="h-24 sm:h-32 md:h-40 object-contain transition-all duration-500 hover:scale-105" />
+              </div>
+              
+              <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">Expand your knowledge with industry experts discussing the latest tech trends</p>
+              <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto mt-4 sm:mt-6 mb-2 rounded-full" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"></div>
             </div>
             
             <!-- Enhanced merchandise carousel -->
-            <div class="relative px-4 md:px-10">
+            <div class="relative px-2 sm:px-4 md:px-10">
               <!-- Navigation arrows for desktop -->
-              <button class="absolute top-1/2 -left-6 md:-left-12 transform -translate-y-1/2 bg-white/80 hover:bg-white shadow-md hover:shadow-lg text-primary w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300 focus:outline-none hidden md:flex" id="semnar-prev">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button class="absolute top-1/2 -left-4 sm:-left-6 md:-left-12 transform -translate-y-1/2 bg-white/80 hover:bg-white shadow-md hover:shadow-lg text-primary w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300 focus:outline-none hidden md:flex" id="semnar-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              <button class="absolute top-1/2 -right-6 md:-right-12 transform -translate-y-1/2 bg-white/80 hover:bg-white shadow-md hover:shadow-lg text-primary w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300 focus:outline-none hidden md:flex" id="semnar-next">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button class="absolute top-1/2 -right-4 sm:-right-6 md:-right-12 transform -translate-y-1/2 bg-white/80 hover:bg-white shadow-md hover:shadow-lg text-primary w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300 focus:outline-none hidden md:flex" id="semnar-next">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
               
-              <!-- Carousel container with improved styling -->
-              <div class="w-full overflow-x-auto pb-4 flex gap-8 scroll-smooth relative snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary/40 hover:scrollbar-thumb-primary scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" id="seminar-carousel">
-                <div class="swipe-item flex-none w-64 md:w-72 snap-start snap-always">
-                  <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col transform hover:-translate-y-2">
-                    <div class="overflow-hidden rounded-xl mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
+              <!-- Carousel container -->
+              <div class="w-full overflow-x-auto pb-4 flex gap-4 sm:gap-6 md:gap-8 scroll-smooth relative snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary/40 hover:scrollbar-thumb-primary scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" id="seminar-carousel">
+                <div class="swipe-item flex-none w-56 sm:w-64 md:w-72 snap-start snap-always">
+                  <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col card-hover">
+                    <div class="overflow-hidden rounded-xl mb-4 sm:mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
                       <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      <img class="h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Workshirt.png" alt="Workshirt" />
+                      <img class="h-48 sm:h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Workshirt.png" alt="Workshirt" />
                     </div>
-                    <div class="text-primary text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Workshirt</div>
-                    <div class="text-gray-500 text-sm mt-2 text-center">Exclusive design for seminar participants</div>
+                    <div class="text-primary text-lg sm:text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Workshirt</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 text-center">Exclusive design for seminar participants</div>
                   </div>
                 </div>
                 
-                <div class="swipe-item flex-none w-64 md:w-72 snap-start snap-always">
-                  <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col transform hover:-translate-y-2">
-                    <div class="overflow-hidden rounded-xl mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
+                <div class="swipe-item flex-none w-56 sm:w-64 md:w-72 snap-start snap-always">
+                  <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col card-hover">
+                    <div class="overflow-hidden rounded-xl mb-4 sm:mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
                       <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      <img class="h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Notebook.png" alt="Notebook" />
+                      <img class="h-48 sm:h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Notebook.png" alt="Notebook" />
                     </div>
-                    <div class="text-primary text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Notebook</div>
-                    <div class="text-gray-500 text-sm mt-2 text-center">Premium notebook for your ideas</div>
+                    <div class="text-primary text-lg sm:text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Notebook</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 text-center">Premium notebook for your ideas</div>
                   </div>
                 </div>
                 
-                <div class="swipe-item flex-none w-64 md:w-72 snap-start snap-always">
-                  <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col transform hover:-translate-y-2">
-                    <div class="overflow-hidden rounded-xl mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
+                <div class="swipe-item flex-none w-56 sm:w-64 md:w-72 snap-start snap-always">
+                  <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col card-hover">
+                    <div class="overflow-hidden rounded-xl mb-4 sm:mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
                       <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      <img class="h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Tumblr.png" alt="Tumbler" />
+                      <img class="h-48 sm:h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Tumblr.png" alt="Tumbler" />
                     </div>
-                    <div class="text-primary text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Tumbler</div>
-                    <div class="text-gray-500 text-sm mt-2 text-center">Eco-friendly hydration companion</div>
+                    <div class="text-primary text-lg sm:text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Tumbler</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 text-center">Eco-friendly hydration companion</div>
                   </div>
                 </div>
                 
-                <div class="swipe-item flex-none w-64 md:w-72 snap-start snap-always">
-                  <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col transform hover:-translate-y-2">
-                    <div class="overflow-hidden rounded-xl mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
+                <div class="swipe-item flex-none w-56 sm:w-64 md:w-72 snap-start snap-always">
+                  <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col card-hover">
+                    <div class="overflow-hidden rounded-xl mb-4 sm:mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
                       <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      <img class="h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Pulpen.png" alt="Pen" />
+                      <img class="h-48 sm:h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Pulpen.png" alt="Pen" />
                     </div>
-                    <div class="text-primary text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Pen</div>
-                    <div class="text-gray-500 text-sm mt-2 text-center">Smooth writing experience</div>
+                    <div class="text-primary text-lg sm:text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Pen</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 text-center">Smooth writing experience</div>
                   </div>
                 </div>
                 
-                <div class="swipe-item flex-none w-64 md:w-72 snap-start snap-always">
-                  <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col transform hover:-translate-y-2">
-                    <div class="overflow-hidden rounded-xl mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
+                <div class="swipe-item flex-none w-56 sm:w-64 md:w-72 snap-start snap-always">
+                  <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col card-hover">
+                    <div class="overflow-hidden rounded-xl mb-4 sm:mb-6 flex-grow flex items-center justify-center bg-gray-50 relative group">
                       <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      <img class="h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Plakat.png" alt="Plakat" />
+                      <img class="h-48 sm:h-56 object-contain transition-all duration-500 group-hover:scale-110" src="src/Plakat.png" alt="Plakat" />
                     </div>
-                    <div class="text-primary text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Plakat</div>
-                    <div class="text-gray-500 text-sm mt-2 text-center">Commemorative award for speakers</div>
+                    <div class="text-primary text-lg sm:text-xl font-bold group-hover:text-secondary transition-colors duration-300 text-center">Plakat</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 text-center">Commemorative award for speakers</div>
                   </div>
                 </div>
               </div>
@@ -402,8 +469,11 @@
           </div>
         </section>
 
-        <!-- Fun Run Section - Enhanced with modern styling and better visual elements -->
-        <section id="funrun" class="py-24 px-5 relative my-16 overflow-hidden">
+        <!-- Fun Run Section -->
+        <section id="funrun" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden">
+          <!-- Enhanced background with radial gradient -->
+          <div class="absolute inset-0 bg-gradient-radial from-[#1B4599] to-[#1D1C52] opacity-95"></div>
+          
           <!-- Decorative background elements - enhanced with more dynamic elements -->
           <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 via-primary/3 to-secondary/[0.03] pointer-events-none"></div>
           <div class="absolute top-0 left-0 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl opacity-70 animate-pulse-slow"></div>
@@ -411,55 +481,55 @@
           <div class="absolute -right-10 top-1/4 w-32 h-32 bg-accent/10 rounded-full filter blur-xl opacity-40"></div>
           
           <!-- Decorative running tracks -->
-          <div class="absolute left-0 right-0 h-1 bg-secondary/20 top-20 rounded-full"></div>
-          <div class="absolute left-0 right-0 h-1 bg-secondary/20 bottom-20 rounded-full"></div>
+          <div class="absolute left-0 right-0 h-1 bg-white/20 top-20 rounded-full"></div>
+          <div class="absolute left-0 right-0 h-1 bg-white/20 bottom-20 rounded-full"></div>
           
-          <div class="w-full max-w-6xl mx-auto px-5 py-10 relative z-10">
+          <div class="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-5 py-6 sm:py-8 md:py-10 relative z-10">
             <!-- Section header with enhanced animation and styling -->
-            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-              <div class="inline-flex items-center gap-2 mb-3">
-                <span class="bg-secondary/10 text-secondary px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-wider animate-pulse-slow">Event Highlight</span>
-                <span class="h-px w-10 bg-secondary/30"></span>
-                <span class="text-xs text-secondary/70 font-medium uppercase">5K Race</span>
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="800">
+              <div class="inline-flex items-center gap-2 mb-6">
+                <span class="bg-white/10 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider animate-pulse-slow">Event Highlight</span>
+                <span class="h-px w-10 bg-white/30"></span>
+                <span class="text-xs text-white/70 font-medium uppercase">5K Race</span>
               </div>
               
-              <h2 class="text-center text-transparent bg-gradient-to-r from-secondary via-primary/90 to-secondary bg-clip-text text-4xl md:text-5xl font-extrabold mt-4 mb-3 relative inline-block" data-aos-delay="100">
-                FUN RUN
-                <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent rounded-full"></div>
-              </h2>
+              <!-- Fun Run Logo -->
+              <div class="mb-6 flex justify-center" data-aos-delay="100">
+                <img src="src/Logo FunRun.png" alt="Fun Run 5K" class="h-24 sm:h-32 md:h-40 object-contain transition-all duration-500 hover:scale-105" />
+              </div>
               
-              <p class="text-gray-600 max-w-2xl mx-auto mt-4">Join our exhilarating 5K running event to celebrate fitness, community, and technology</p>
+              <p class="text-white/90 max-w-2xl mx-auto mt-4 text-sm sm:text-base">Join our exhilarating 5K running event to celebrate fitness, community, and technology</p>
               <div class="flex gap-2 justify-center mt-4" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-                <div class="h-1 w-3 bg-secondary/50 rounded-full"></div>
-                <div class="h-1 w-12 bg-secondary rounded-full"></div>
-                <div class="h-1 w-3 bg-secondary/50 rounded-full"></div>
+                <div class="h-1 w-3 bg-white/50 rounded-full"></div>
+                <div class="h-1 w-12 bg-white rounded-full"></div>
+                <div class="h-1 w-3 bg-white/50 rounded-full"></div>
               </div>
             </div>
             
             <!-- Event highlights before merchandise -->
-            <div class="flex flex-wrap gap-6 justify-center mb-12">
-              <div class="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm" data-aos="fade-up" data-aos-delay="150">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary">
+            <div class="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-12">
+              <div class="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-sm text-sm sm:text-base border border-white/20" data-aos="fade-up" data-aos-delay="150">
+                <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs sm:text-sm">
                   <i class="fas fa-calendar"></i>
                 </div>
-                <span>May 25, 2025</span>
+                <span class="text-white">May 25, 2025</span>
               </div>
-              <div class="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary">
+              <div class="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-sm text-sm sm:text-base border border-white/20" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs sm:text-sm">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <span>UMY Campus</span>
+                <span class="text-white">UMY Campus</span>
               </div>
-              <div class="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm" data-aos="fade-up" data-aos-delay="250">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary">
+              <div class="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-sm text-sm sm:text-base border border-white/20" data-aos="fade-up" data-aos-delay="250">
+                <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs sm:text-sm">
                   <i class="fas fa-running"></i>
                 </div>
-                <span>5K Distance</span>
+                <span class="text-white">5K Distance</span>
               </div>
             </div>
             
-            <!-- Enhanced merchandise display with modern card design - improved with more interactive elements -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            <!-- Enhanced merchandise display -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4">
               <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
                 <div class="relative h-80 overflow-hidden bg-gray-50">
                   <img class="w-full h-full object-contain transition-all duration-500 group-hover:scale-105" src="src/Bag.png" alt="Drawstring Bag" />
@@ -526,9 +596,9 @@
                   </div>
                 </div>
                 <div class="p-6">
-                  <div class="flex justify-between items-center">
+                  <div class="flex justify-between items-center flex-wrap gap-2">
                     <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">Collectible</span>
-                    <a href="fun-run.html#merchandise" class="text-secondary group-hover:text-primary transition-colors duration-300 flex items-center gap-1">
+                    <a href="fun-run.html#merchandise" class="text-secondary group-hover:text-primary transition-colors duration-300 flex items-center gap-1 text-sm">
                       Learn more 
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -563,48 +633,48 @@
             </div>
             
             <!-- Benefits section -->
-            <div class="mt-16 bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg" data-aos="fade-up">
-              <h3 class="text-2xl font-bold text-primary mb-6 text-center">Why Join Our Fun Run?</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="flex flex-col items-center text-center p-4">
-                  <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary text-2xl">
+            <div class="mt-12 sm:mt-16 bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-white/20" data-aos="fade-up">
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">Why Join Our Fun Run?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <div class="flex flex-col items-center text-center p-3 sm:p-4">
+                  <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center mb-3 sm:mb-4 text-white text-lg sm:text-2xl">
                     <i class="fas fa-heart"></i>
                   </div>
-                  <h4 class="text-lg font-semibold text-gray-800 mb-2">Promote Healthy Living</h4>
-                  <p class="text-gray-600">Participate in a fun physical activity that promotes health and wellness</p>
+                  <h4 class="text-base sm:text-lg font-semibold text-white mb-2">Promote Healthy Living</h4>
+                  <p class="text-white/80 text-sm sm:text-base">Participate in a fun physical activity that promotes health and wellness</p>
                 </div>
-                <div class="flex flex-col items-center text-center p-4">
-                  <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary text-2xl">
+                <div class="flex flex-col items-center text-center p-3 sm:p-4">
+                  <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center mb-3 sm:mb-4 text-white text-lg sm:text-2xl">
                     <i class="fas fa-users"></i>
                   </div>
-                  <h4 class="text-lg font-semibold text-gray-800 mb-2">Community Building</h4>
-                  <p class="text-gray-600">Connect with like-minded individuals from the tech community</p>
+                  <h4 class="text-base sm:text-lg font-semibold text-white mb-2">Community Building</h4>
+                  <p class="text-white/80 text-sm sm:text-base">Connect with like-minded individuals from the tech community</p>
                 </div>
-                <div class="flex flex-col items-center text-center p-4">
-                  <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary text-2xl">
+                <div class="flex flex-col items-center text-center p-3 sm:p-4">
+                  <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center mb-3 sm:mb-4 text-white text-lg sm:text-2xl">
                     <i class="fas fa-gift"></i>
                   </div>
-                  <h4 class="text-lg font-semibold text-gray-800 mb-2">Exclusive Merchandise</h4>
-                  <p class="text-gray-600">Take home high-quality IT SPECTA merchandise as part of your registration</p>
+                  <h4 class="text-base sm:text-lg font-semibold text-white mb-2">Exclusive Merchandise</h4>
+                  <p class="text-white/80 text-sm sm:text-base">Take home high-quality IT SPECTA merchandise as part of your registration</p>
                 </div>
               </div>
             </div>
             
-            <!-- Enhanced CTA button with highlight effect and countdown -->
-            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="300">
-              <p class="text-gray-600 mb-3">Registration closes in:</p>
-              <div class="flex justify-center gap-4 mb-8">
-                <div class="w-20 h-20 bg-white rounded-xl shadow-md flex flex-col items-center justify-center">
-                  <span class="text-2xl font-bold text-primary">15</span>
-                  <span class="text-xs text-gray-500">Days</span>
+            <!-- Enhanced CTA section -->
+            <div class="text-center mt-12 sm:mt-16" data-aos="fade-up" data-aos-delay="300">
+              <p class="text-white/90 mb-3 text-sm sm:text-base">Registration closes in:</p>
+              <div class="flex justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-md flex flex-col items-center justify-center">
+                  <span class="text-xl sm:text-2xl font-bold text-white">15</span>
+                  <span class="text-xs text-white/70">Days</span>
                 </div>
-                <div class="w-20 h-20 bg-white rounded-xl shadow-md flex flex-col items-center justify-center">
-                  <span class="text-2xl font-bold text-primary">08</span>
-                  <span class="text-xs text-gray-500">Hours</span>
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-md flex flex-col items-center justify-center">
+                  <span class="text-xl sm:text-2xl font-bold text-white">08</span>
+                  <span class="text-xs text-white/70">Hours</span>
                 </div>
-                <div class="w-20 h-20 bg-white rounded-xl shadow-md flex flex-col items-center justify-center">
-                  <span class="text-2xl font-bold text-primary">45</span>
-                  <span class="text-xs text-gray-500">Minutes</span>
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-md flex flex-col items-center justify-center">
+                  <span class="text-xl sm:text-2xl font-bold text-white">45</span>
+                  <span class="text-xs text-white/70">Minutes</span>
                 </div>
               </div>
               
@@ -618,59 +688,58 @@
                 </a>
               </div>
               
-              <p class="mt-4 text-sm text-gray-500">Early bird registration ends April 30, 2025</p>
+              <p class="mt-4 text-sm text-white/70">Early bird registration ends April 30, 2025</p>
             </div>
           </div>
         </section>
 
         <!-- Footer Section -->
-        <footer class="bg-gradient-to-br from-secondary to-[#d9700c] text-white relative w-full py-16 px-10 mt-20">
+        <footer class="bg-gradient-to-br from-secondary to-[#d9700c] text-white relative w-full py-12 sm:py-16 px-4 sm:px-8 md:px-10">
           <div class="max-w-5xl mx-auto">
             <div class="flex justify-center">
-              <img class="w-20 h-auto transition-transform duration-300 hover:scale-110" src="src/Logo.png" alt="IT SPECTA Logo" />
+              <img class="w-16 h-auto sm:w-20 transition-transform duration-300 hover:scale-110" src="src/Logo.png" alt="IT SPECTA Logo" />
             </div>
-            <h2 class="text-5xl font-bold text-center my-5 drop-shadow">IT SPECTA</h2>
-            <p class="text-2xl font-bold text-center mb-8">For more information:</p>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center my-4 sm:my-5 drop-shadow">IT SPECTA</h2>
+            <p class="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8">For more information:</p>
             
-            <div class="contact-info flex flex-col md:flex-row justify-center items-center gap-10 mb-10">
+            <div class="contact-info flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10">
               <div class="footer-wa contact-item flex flex-col items-center">
-                <img class="footer-icon w-10 h-10 mb-2" src="src/WA.png" alt="WhatsApp" />
-                <div class="footer-watitle text-center">081229374264 (Wildan)</div>
+                <img class="footer-icon w-8 h-8 sm:w-10 sm:h-10 mb-2" src="src/WA.png" alt="WhatsApp" />
+                <div class="footer-watitle text-center text-sm sm:text-base">081229374264 (Wildan)</div>
               </div>
               <div class="footer-ig contact-item flex flex-col items-center">
-                <img class="footer-icon w-10 h-10 mb-2" src="src/IG.png" alt="Instagram" />
-                <div class="footer-igtitle text-center">@it_specta</div>
+                <img class="footer-icon w-8 h-8 sm:w-10 sm:h-10 mb-2" src="src/IG.png" alt="Instagram" />
+                <div class="footer-igtitle text-center text-sm sm:text-base">@it_specta</div>
               </div>
               <div class="footer-yt contact-item flex flex-col items-center">
-                <img class="footer-icon w-10 h-10 mb-2" src="src/YT.png" alt="YouTube" />
-                <div class="footer-yttitle text-center">IT SPECTA UMY</div>
+                <img class="footer-icon w-8 h-8 sm:w-10 sm:h-10 mb-2" src="src/YT.png" alt="YouTube" />
+                <div class="footer-yttitle text-center text-sm sm:text-base">IT SPECTA UMY</div>
               </div>
             </div>
 
-            <div class="text-center max-w-xl mx-auto my-10 leading-relaxed text-lg">
+            <div class="text-center max-w-xl mx-auto my-8 sm:my-10 leading-relaxed text-sm sm:text-base md:text-lg">
               Gedung Siti Walidah, F4 Lt.2 Kampus Terpadu UMY<br>
               JL. Brawijaya, Kasihan, Bantul, Yogyakarta 55183
             </div>
             
-            <div class="partnership grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="partnership grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
               <div class="sponsors">
-                <h3 class="sponsor-title text-xl font-semibold mb-4">Sponsored by:</h3>
-                <div class="sponsor-logos flex gap-4 justify-center flex-wrap">
-                  <img src="src/Activelab logo 1.png" class="h-12 object-contain" />
-                  <img src="src/Gojek.png" class="h-12 object-contain" />
-                  <img src="src/Logo Koat 1.png" class="h-12 object-contain" />
+                <h3 class="sponsor-title text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center md:text-left">Sponsored by:</h3>
+                <div class="sponsor-logos flex gap-3 sm:gap-4 justify-center md:justify-start flex-wrap">
+                  <img src="src/Activelab logo 1.png" class="h-10 sm:h-12 object-contain" />
+                  <img src="src/Gojek.png" class="h-10 sm:h-12 object-contain" />
+                  <img src="src/Logo Koat 1.png" class="h-10 sm:h-12 object-contain" />
                 </div>
               </div>
               <div class="media-partners">
-                <h3 class="media-title text-xl font-semibold mb-4">Media Partner:</h3>
-                <div class="media-logos flex gap-4 justify-center flex-wrap">
-                  <img src="src/LariJogja.png" class="h-12 object-contain" />
-                  <img src="src/logo rpc 1.png" class="h-12 object-contain" />
-                  <img src="src/Logo Fotoyu 1.png" class="h-12 object-contain" />
+                <h3 class="media-title text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center md:text-left">Media Partner:</h3>
+                <div class="media-logos flex gap-3 sm:gap-4 justify-center md:justify-start flex-wrap">
+                  <img src="src/LariJogja.png" class="h-10 sm:h-12 object-contain" />
+                  <img src="src/logo rpc 1.png" class="h-10 sm:h-12 object-contain" />
+                  <img src="src/Logo Fotoyu 1.png" class="h-10 sm:h-12 object-contain" />
                 </div>
               </div>
             </div>
-            
           </div>
         </footer>
       </div>
@@ -680,6 +749,29 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
     <script>
+      // Mobile menu toggle function
+      function toggleMobileMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const navMenu = document.querySelector('.nav-menu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        
+        if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+          navMenu.classList.remove('active');
+        }
+      });
+
+      // Close mobile menu when window is resized to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+          document.querySelector('.nav-menu').classList.remove('active');
+        }
+      });
+
       // Add seminar carousel functionality
       document.addEventListener('DOMContentLoaded', function() {
         // Seminar carousel controls
