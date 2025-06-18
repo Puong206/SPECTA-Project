@@ -9,4 +9,5 @@ Refky Muhammad Syahrin (20230140050)
 Pradipta pratama putra (20230140037)
 
 Use Case
-![USE CASE-SPECTA-Project (Kelompok 5)](https://github.com/user-attachments/assets/b4a90872-b89b-44b5-961e-919c700c9a63)
+![USE CASE-SPECTA-Project (Kelompok 5)]
+![USE CASE IT SPECTA](https://github.com/user-attachments/assets/c0802b14-9c3f-49f3-b6fd-962f4756b8e4)
