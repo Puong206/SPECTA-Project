@@ -1,0 +1,13 @@
+Kelompok 5 (TI A)
+
+Arya Bagas Saputra (20230140029)
+Wildan Zauhair Pratama (20230140045)
+Muhammad Wildan Indi Naufal (20230140020)
+Kevin Adrian Fidel (20230140027)
+M Dean Dwi Bekti (20230140042) 
+Refky Muhammad Syahrin (20230140050)
+Pradipta pratama putra (20230140037)
+
+Use Case
+![USE CASE-SPECTA-Project (Kelompok 5)]
+![USE CASE IT SPECTA](https://github.com/user-attachments/assets/c0802b14-9c3f-49f3-b6fd-962f4756b8e4)
