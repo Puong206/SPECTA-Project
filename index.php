@@ -2,21 +2,25 @@
 // Menentukan judul halaman untuk ditampilkan di tag <title> pada header
 $page_title = 'Home';
 
-// Memanggil file header, yang juga akan memulai sesi
+// Memanggil file header, yang juga akan memulai sesi PHP
 require 'templates/header.php';
 // Memanggil file koneksi database untuk digunakan jika ada data dinamis
 require 'php/db_connect.php';
 ?>
 
 <!-- Decorative elements -->
+<!-- Elemen dekoratif dengan posisi fixed dan blur effect -->
 <div class="fixed w-full h-full top-0 left-0 pointer-events-none z-0">
+  <!-- Lingkaran blur di berbagai posisi untuk efek visual -->
   <div class="absolute top-20 left-[10%] w-40 h-40 bg-primary/10 rounded-full filter blur-3xl"></div>
   <div class="absolute bottom-20 right-[5%] w-60 h-60 bg-secondary/10 rounded-full filter blur-3xl"></div>
   <div class="absolute top-[40%] right-[30%] w-32 h-32 bg-accent/10 rounded-full filter blur-3xl"></div>
 </div>
 
 <!-- Header Section with Video Background -->
+<!-- Section header dengan video background -->
 <header class="w-full h-screen relative overflow-hidden" data-aos="fade">
+  <!-- Video background dengan autoplay dan loop -->
   <video
     class="absolute top-0 left-0 w-full h-full object-cover brightness-50 hover:brightness-70 transition-all duration-500"
     width="100%"
@@ -26,14 +30,19 @@ require 'php/db_connect.php';
     playsinline
     preload="auto"
   >
+    <!-- Source video dengan fallback -->
     <source src="assets/videos/TEASER.mp4" type="video/mp4" />
   </video>
 
   <!-- Video overlay with pattern -->
+  <!-- Overlay video dengan pattern noise -->
   <div class="absolute top-0 left-0 w-full h-full bg-noise opacity-30"></div>
 
+  <!-- Konten utama video dengan centering -->
   <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center z-10 bg-gradient-to-b from-black/50 via-black/30 to-transparent px-4">
+    <!-- Container konten dengan hover effect -->
     <div class="transform transition-all duration-700 hover:scale-105 max-w-4xl">
+      <!-- Judul utama dengan gradient text -->
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 drop-shadow-lg tracking-tight relative">
         <span class="text-outline text-white leading-tight block mb-2">WELCOME TO</span>
         <div class="relative">
@@ -41,15 +50,18 @@ require 'php/db_connect.php';
           <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full"></div>
         </div>
       </h1>
+      <!-- Subtitle dengan text shadow -->
       <p class="text-lg sm:text-xl md:text-2xl font-medium text-shadow-md max-w-2xl mx-auto mb-8">
         Experience the Future of Technology
       </p>
+      <!-- CTA button dengan hover effects -->
       <div class="mt-8">
         <a
           href="#about"
           class="px-6 sm:px-8 py-3 sm:py-4 bg-primary/80 hover:bg-primary border border-white/30 hover:border-white rounded-full text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center group text-sm sm:text-base"
         >
           Explore Now
+          <!-- Arrow icon dengan group hover animation -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
@@ -70,6 +82,7 @@ require 'php/db_connect.php';
   </div>
 
   <!-- Floating scroll indicator -->
+  <!-- Indikator scroll dengan animasi bounce -->
   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -88,17 +101,22 @@ require 'php/db_connect.php';
   </div>
 </header>
 
-<?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
 <!-- Welcome Message for Logged In Users -->
+<!-- Pesan selamat datang untuk user yang sudah login -->
+<?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
 <section class="relative py-6 px-4 sm:px-6 md:px-8 bg-gradient-to-r from-primary/10 via-white to-secondary/10 border-b border-gray-100">
   <div class="max-w-6xl mx-auto">
+    <!-- Flex container untuk layout responsive -->
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-down" data-aos-duration="800">
+      <!-- Info user dengan avatar dan nama -->
       <div class="flex items-center gap-4">
+        <!-- Avatar dengan gradient background -->
         <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
         </div>
+        <!-- Teks selamat datang dengan username dari session -->
         <div>
           <h3 class="text-lg sm:text-xl font-bold text-gray-800">
             Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?>! 👋
@@ -106,6 +124,7 @@ require 'php/db_connect.php';
           <p class="text-sm text-gray-600">Terima kasih telah bergabung dengan IT SPECTA 2025</p>
         </div>
       </div>
+      <!-- Action buttons -->
       <div class="flex items-center gap-3">
         <a href="profile.php" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 text-sm font-medium">
           Profil Saya
@@ -543,12 +562,14 @@ require 'php/db_connect.php';
 <script src="assets/js/script.js"></script>
 <script>
   // Mobile menu toggle function
+  // Fungsi untuk toggle menu mobile
   function toggleMobileMenu() {
     const navMenu = document.querySelector(".nav-menu");
     navMenu.classList.toggle("active");
   }
 
   // Close mobile menu when clicking outside
+  // Tutup menu mobile saat klik di luar
   document.addEventListener("click", function (event) {
     const navMenu = document.querySelector(".nav-menu");
     const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
@@ -562,26 +583,27 @@ require 'php/db_connect.php';
   });
 
   // Close mobile menu when window is resized to desktop
+  // Tutup menu mobile saat window diresize ke desktop
   window.addEventListener("resize", function () {
     if (window.innerWidth >= 768) {
       document.querySelector(".nav-menu").classList.remove("active");
     }
   });
 
-  // Initialize AOS
+  // Initialize AOS dengan konfigurasi
   AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
+    duration: 1000,   // Durasi animasi
+    once: true,       // Animasi hanya sekali
+    offset: 100       // Offset untuk trigger
   });
 </script>
 
 <?php
-// Menutup koneksi database
+// Menutup koneksi database jika ada
 if (isset($conn)) {
     $conn->close();
 }
 
-// Memanggil file footer.
+// Memanggil file footer untuk penutup struktur HTML.
 require 'templates/footer.php';
 ?>

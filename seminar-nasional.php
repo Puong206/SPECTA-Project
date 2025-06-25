@@ -1,19 +1,19 @@
 <?php
-// Langkah 1: Panggil koneksi database dan fungsi
+// Langkah 1: Panggil file koneksi database dan fungsi helper
 require 'php/db_connect.php';
 require 'php/functions.php';
 
-// Langkah 2: Tentukan ID untuk acara ini (misalnya, 1 untuk Seminar Nasional)
+// Langkah 2: Tentukan ID untuk acara ini (1 untuk Seminar Nasional)
 $event_id = 1;
 
-// Langkah 3: Ambil data acara dari database
+// Langkah 3: Ambil data acara dari database menggunakan prepared statement
 $stmt = $conn->prepare("SELECT * FROM events WHERE id = ?");
 $stmt->bind_param("i", $event_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $seminar = $result->fetch_assoc();
 
-// Jika acara tidak ditemukan, hentikan eksekusi
+// Jika acara tidak ditemukan, hentikan eksekusi dengan pesan error
 if (!$seminar) {
     die("Acara tidak ditemukan.");
 }
@@ -23,54 +23,74 @@ require 'templates/header.php';
 ?>
 
 <!-- Hero Section with glassmorphism -->
+<!-- Section hero dengan efek glassmorphism -->
 <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative mt-16 sm:mt-18 md:mt-20 overflow-hidden">
   <!-- Background image -->
+  <!-- Gambar background dengan opacity dan positioning -->
   <div class="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-40 z-0" style="background-image: url('assets/images/SemNas Background.JPG');"></div>
   
   <!-- Glassmorphism layers -->
+  <!-- Layer glassmorphism dengan gradient dan backdrop blur -->
   <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-white/10 to-secondary/20 backdrop-blur-sm z-10"></div>
   <div class="absolute inset-0 bg-white/10 backdrop-blur-lg z-15"></div>
   
   <!-- Glass border and shadow effects -->
+  <!-- Border dan shadow untuk efek kaca -->
   <div class="absolute inset-0 border border-white/20 shadow-2xl z-20"></div>
   
   <!-- Decorative background elements with glass effect -->
+  <!-- Elemen dekoratif dengan efek kaca -->
   <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/[0.03] pointer-events-none z-25"></div>
   <div class="absolute top-0 right-0 w-80 h-80 bg-primary/15 rounded-full filter blur-3xl opacity-70 backdrop-blur-sm z-25"></div>
   <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full filter blur-3xl opacity-70 backdrop-blur-sm z-25"></div>
   
   <!-- Additional glass elements -->
+  <!-- Elemen kaca tambahan untuk efek visual -->
   <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full filter blur-xl opacity-60 z-25"></div>
   <div class="absolute bottom-1/3 right-1/3 w-24 h-24 bg-white/5 rounded-full filter blur-xl opacity-60 z-25"></div>
   
+  <!-- Container konten dengan z-index tertinggi -->
   <div class="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-5 py-6 sm:py-8 md:py-10 relative z-30">
     <!-- Section header -->
+    <!-- Header section dengan animasi AOS -->
     <div class="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="800">
+      <!-- Badge event highlight -->
       <span class="bg-primary/10 text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider">Event Highlight</span>
       
       <!-- Seminar Nasional Logo -->
+      <!-- Logo seminar dengan animasi hover -->
       <div class="mt-6 mb-6 flex justify-center" data-aos-delay="100">
         <img src="assets/images/Logo SemNas.png" alt="Seminar Nasional" class="h-24 sm:h-32 md:h-40 object-contain transition-all duration-500 hover:scale-105" />
       </div>
       
+      <!-- Judul utama dengan font responsif -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Seminar Nasional IT SPECTA 2025</h1>
+      <!-- Deskripsi dengan max width -->
       <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">Expand your knowledge with industry experts discussing the latest tech trends</p>
+      <!-- Garis dekoratif dengan animasi -->
       <div class="h-1 w-16 sm:w-24 bg-secondary mx-auto mt-4 sm:mt-6 mb-2 rounded-full" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"></div>
     </div>
   </div>
 </section>
 
 <!-- Event Info Section -->
+<!-- Section informasi acara -->
 <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 relative">
+  <!-- Container dengan max width -->
   <div class="max-w-6xl mx-auto">
+    <!-- Grid untuk informasi acara -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+      <!-- Card tanggal -->
       <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
+        <!-- Icon container -->
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
           <i class="fas fa-calendar text-primary text-sm sm:text-base"></i>
         </div>
+        <!-- Judul dan konten -->
         <h3 class="font-semibold text-gray-800 text-sm sm:text-base mb-2">Tanggal</h3>
         <p class="text-xs sm:text-sm text-gray-600"><?php echo $seminar ? date('d F Y', strtotime($seminar['date'])) : '26 April 2025'; ?></p>
       </div>
+      <!-- Card waktu -->
       <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-3 sm:mb-4">
           <i class="fas fa-clock text-secondary text-sm sm:text-base"></i>
@@ -78,6 +98,7 @@ require 'templates/header.php';
         <h3 class="font-semibold text-gray-800 text-sm sm:text-base mb-2">Waktu</h3>
         <p class="text-xs sm:text-sm text-gray-600">08.00 - 12.00 WIB</p>
       </div>
+      <!-- Card tempat -->
       <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3 sm:mb-4">
           <i class="fas fa-map-marker-alt text-accent text-sm sm:text-base"></i>
@@ -85,6 +106,7 @@ require 'templates/header.php';
         <h3 class="font-semibold text-gray-800 text-sm sm:text-base mb-2">Tempat</h3>
         <p class="text-xs sm:text-sm text-gray-600">Ruang Sidang lt 5, AR Fachrudin B, UMY</p>
       </div>
+      <!-- Card biaya -->
       <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md card-hover">
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-dark/10 flex items-center justify-center mb-3 sm:mb-4">
           <i class="fas fa-ticket-alt text-dark text-sm sm:text-base"></i>
@@ -95,11 +117,14 @@ require 'templates/header.php';
     </div>
 
     <!-- About Section -->
+    <!-- Section tentang seminar dengan elemen dekoratif -->
     <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 relative overflow-hidden group" data-aos="fade-up">
       <!-- Decorative elements -->
+      <!-- Elemen dekoratif dengan hover effect -->
       <div class="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-secondary/10 group-hover:bg-secondary/20 transition-all duration-500"></div>
       <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-500"></div>
       
+      <!-- Konten dengan z-index relative -->
       <div class="relative">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6">Tentang Seminar</h2>
         <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
@@ -210,6 +235,7 @@ require 'templates/header.php';
 </section>
   
 <!-- Registration Section -->
+<!-- Section pendaftaran dengan background gradient -->
 <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-primary/5 to-transparent">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
@@ -254,9 +280,11 @@ require 'templates/header.php';
         </div>
       </div>
       
+      <!-- CTA button dengan link ke handler transaksi -->
       <div class="text-center">
         <a href="php/handle_transaction.php?event_id=<?php echo $seminar['id']; ?>&redirect=seminar-nasional.php" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
           <span>Daftar Sekarang</span>
+          <!-- Arrow icon dengan animasi -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
@@ -267,7 +295,7 @@ require 'templates/header.php';
 </section>
 
 <?php
-// Menutup koneksi database
+// Menutup statement dan koneksi database
 if (isset($stmt)) {
     $stmt->close();
 }
@@ -275,6 +303,6 @@ if (isset($conn)) {
     $conn->close();
 }
 
-// Memanggil file footer.
+// Memanggil file footer untuk penutup HTML.
 require 'templates/footer.php';
 ?>
