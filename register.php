@@ -21,6 +21,7 @@ require 'templates/header.php';
           <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-lg text-center"><?php echo htmlspecialchars($_GET['error']); ?></div>
         <?php endif; ?>
 
+        <div id="form-validation-error" class="hidden mb-4 p-4 bg-red-100 text-red-700 rounded-lg text-center"></div>
         <form action="php/register_process.php" method="POST" class="space-y-6">
           
           <div>
@@ -67,11 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm_password');
     
+    // ================= PERUBAHAN 2: AMBIL ELEMENT PESAN ERROR =================
+    const errorContainer = document.getElementById('form-validation-error');
+    // ================= AKHIR PERUBAHAN 2 =================
+
     const usernameLengthReq = document.getElementById('username-length');
     const passwordLengthReq = document.getElementById('password-length');
     const matchMessage = document.getElementById('confirm-match-message');
 
-    // Validasi username hanya untuk panjang karakter
+    // (Fungsi-fungsi validasi real-time tetap sama, tidak perlu diubah)
     function validateUsername() {
         if (usernameInput.value.length >= 3) {
             usernameLengthReq.classList.replace('text-red-500', 'text-green-500');
@@ -79,8 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
             usernameLengthReq.classList.replace('text-green-500', 'text-red-500');
         }
     }
-
-    // Validasi password
     function validatePassword() {
         if (passwordInput.value.length >= 6) {
             passwordLengthReq.classList.replace('text-red-500', 'text-green-500');
@@ -88,8 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
             passwordLengthReq.classList.replace('text-green-500', 'text-red-500');
         }
     }
-
-    // Validasi konfirmasi password
     function validateConfirmPassword() {
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
@@ -112,12 +113,37 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('input', validateConfirmPassword);
     confirmPasswordInput.addEventListener('input', validateConfirmPassword);
 
+    // ================= PERUBAHAN 3: LOGIKA BARU UNTUK VALIDASI SUBMIT =================
     form.addEventListener('submit', function(e) {
+        // Setiap kali tombol submit ditekan, sembunyikan dulu pesan error yang mungkin ada
+        errorContainer.classList.add('hidden');
+        errorContainer.textContent = '';
+
+        // Fungsi bantuan untuk menampilkan error
+        const showError = (message) => {
+            e.preventDefault(); // Mencegah form dikirim
+            errorContainer.textContent = message; // Isi pesan error
+            errorContainer.classList.remove('hidden'); // Tampilkan kotak pesan
+        };
+
+        // 1. Cek panjang username
+        if (usernameInput.value.length < 3) {
+            showError('Username harus memiliki minimal 3 karakter.');
+            return;
+        }
+
+        // 2. Cek panjang password
+        if (passwordInput.value.length < 6) {
+            showError('Password harus memiliki minimal 6 karakter.');
+            return;
+        }
+        
+        // 3. Cek kecocokan password
         if (passwordInput.value !== confirmPasswordInput.value) {
-            e.preventDefault(); 
-            alert('Konfirmasi password tidak cocok!');
+            showError('Konfirmasi password tidak cocok!');
         }
     });
+    // ================= AKHIR PERUBAHAN 3 =================
 });
 </script>
 
