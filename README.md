@@ -17,3 +17,6 @@ Laporan
 
 Resume Materi
 [Resume Materi PDW_Refky Muhammad Syahrin_20230140050_A.pdf](https://github.com/user-attachments/files/21015941/Resume.Materi.PDW_Refky.Muhammad.Syahrin_20230140050_A.pdf)
+
+
+Resume PDW mdeandwibekti [Resume PDW_20230140042.pdf](https://github.com/user-attachments/files/21015951/Resume.PDW_20230140042.pdf)
