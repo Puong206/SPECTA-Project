@@ -12,9 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // --- Proses Validasi Input ---
     $errors = [];
 
+    // Validasi panjang username minimal
+    if (strlen($username) < 3) {
+        $errors[] = "Username minimal harus 3 karakter.";
+    }
+    // Validasi karakter yang diizinkan (opsional tapi disarankan)
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
+        $errors[] = "Username hanya boleh mengandung huruf, angka, dan underscore (_).";
+    }
+
     // Validasi field yang wajib diisi
-    if (empty($username) || empty($password)) {
-        $errors[] = "Username dan password wajib diisi.";
+    if (empty($password)) {
+        $errors[] = "Password wajib diisi.";
     }
 
     // Validasi panjang password minimal
@@ -29,34 +38,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // --- Cek keunikan username di database ---
     if (empty($errors)) {
-        // Menyiapkan query untuk mengecek apakah username sudah ada
         $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
-        // Jika username sudah ada, tambahkan error
         if ($result->num_rows > 0) {
-            $errors[] = "Username '" . htmlspecialchars($username) . "' sudah digunakan. Silakan pilih yang lain.";
+            $errors[] = "Username '" . htmlspecialchars($username) . "' sudah digunakan.";
         }
         $stmt->close();
     }
 
     // --- Proses pendaftaran jika semua validasi lolos ---
     if (empty($errors)) {
-        // Menyimpan user baru ke database dengan password yang di-hash menggunakan SHA2
         $stmt = $conn->prepare("INSERT INTO users (username, password, role) VALUES (?, SHA2(?, 256), 'user')");
         $stmt->bind_param("ss", $username, $password);
         
-        // Eksekusi query dan cek hasilnya
         if ($stmt->execute()) {
-            // Tutup koneksi dan redirect ke halaman login dengan pesan sukses
             $stmt->close();
             $conn->close();
             header("Location: ../login.php?success=" . urlencode("Akun berhasil dibuat! Silakan login."));
             exit();
         } else {
-            // Jika gagal menyimpan ke database
             $errors[] = "Registrasi gagal. Silakan coba lagi.";
         }
         $stmt->close();
@@ -65,12 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // --- Redirect kembali ke form registrasi jika ada error ---
     if (!empty($errors)) {
         $conn->close();
-        // Menggabungkan semua pesan error dan redirect dengan parameter error
-        header("Location: ../register.php?error=" . urlencode(implode(" ", $errors)));
+        header("Location: ../register.php?error=" . urlencode(implode(" ", array_unique($errors))));
         exit();
     }
 } else {
-    // Jika file diakses langsung (bukan melalui POST), redirect ke halaman register
+    // Jika file diakses langsung, redirect
     header("Location: ../register.php");
     exit();
 }
