@@ -11,3 +11,6 @@ Pradipta pratama putra (20230140037)
 Use Case
 ![USE CASE-SPECTA-Project (Kelompok 5)]
 ![USE CASE IT SPECTA](https://github.com/user-attachments/assets/c0802b14-9c3f-49f3-b6fd-962f4756b8e4)
+
+Laporan
+[Laporan Project IT SPECTA_Kelompok 5_A.pdf](https://github.com/user-attachments/files/21011968/Laporan.Project.IT.SPECTA_Kelompok.5_A.pdf)
