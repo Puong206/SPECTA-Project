@@ -14,3 +14,6 @@ Use Case
 
 Laporan
 [Laporan Project IT SPECTA_Kelompok 5_A.pdf](https://github.com/user-attachments/files/21011968/Laporan.Project.IT.SPECTA_Kelompok.5_A.pdf)
+
+Resume Materi
+[Resume Materi PDW_Refky Muhammad Syahrin_20230140050_A.pdf](https://github.com/user-attachments/files/21015941/Resume.Materi.PDW_Refky.Muhammad.Syahrin_20230140050_A.pdf)
