@@ -147,7 +147,7 @@ require 'templates/header.php';
     <div class="max-w-4xl mx-auto">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
         <div class="flex flex-col md:flex-row">
-          <div class="md:flex-shrink-0 flex justify-center p-6">
+          <div class="md:flex-shrink-0 flex justify-center items-start p-6">
             <img class="h-48 w-48 object-cover rounded-xl" src="assets/images/pembicara.png" alt="Speaker" onerror="this.src='https://via.placeholder.com/300x300?text=Speaker+1'">
           </div>
           <div class="p-6 md:p-8 flex-1">

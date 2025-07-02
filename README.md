@@ -1,6 +1,6 @@
 Kelompok 5 (TI A)
 
-Arya Bagas Saputra (20230140029)
+Arya Bagas Saputra (20230140029) 
 Wildan Zauhair Pratama (20230140045)
 Muhammad Wildan Indi Naufal (20230140020)
 Kevin Adrian Fidel (20230140027)
