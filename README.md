@@ -21,3 +21,5 @@ Resume Materi
 [Resume PDW_Muhammad Wildan Indi Naufal_20230140020.pdf](https://github.com/user-attachments/files/21016224/Resume.PDW_Muhammad.Wildan.Indi.Naufal_20230140020.pdf)
 [RESUME PDW_KEVIN ADRIAN FIDEL_20230140027.pdf](https://github.com/user-attachments/files/21016753/RESUME.PDW_KEVIN.ADRIAN.FIDEL_20230140027.pdf)
 [Resume Materi PDW_Pradipta Pratama Putra_20230140037_A.pdf](https://github.com/user-attachments/files/21019273/Resume.Materi.PDW_Pradipta.Pratama.Putra_20230140037_A.pdf)
+[RESUMEPDW_Arya Bagas Saputra_20230140029.pdf](https://github.com/user-attachments/files/21076371/RESUMEPDW_Arya.Bagas.Saputra_20230140029.pdf)
+[RESUMEPDW_Wildan Zauhair Pratama_20230140045.pdf](https://github.com/user-attachments/files/21076370/RESUMEPDW_Wildan.Zauhair.Pratama_20230140045.pdf)
